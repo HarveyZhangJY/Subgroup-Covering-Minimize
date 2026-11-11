@@ -1,0 +1,7 @@
+id	exp	abelian	nilpotent	norm3	norm5	H15	structure
+1	225	true	true	true	true	1	C225
+2	75	true	true	true	true	4	C75 x C3
+3	45	false	false	false	true	6	(C5 x C5) : C9
+4	45	true	true	true	true	6	C45 x C5
+5	15	false	false	false	true	6	C3 x ((C5 x C5) : C3)
+6	15	true	true	true	true	24	C15 x C15

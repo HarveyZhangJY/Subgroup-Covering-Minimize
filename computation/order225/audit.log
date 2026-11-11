@@ -1,0 +1,11 @@
+SHA256 covers-15.jsonl: de726e2f8514867e0a591c6e02fa0f4b37234fa7d5fa4046a44296c7bbd8ae3d
+SHA256 solutions-15.jsonl: 2e161a17739e397ba180a51c59cad9708a27979d4a9e02074be32629d0480d08
+SHA256 classification-225.tsv: 175f4086f88031f58d51f799fc4f190013378980e6f89ded84f47f81328c6bc6
+SHA256 export-15.log: 9cc8fb9ad483af7594f109d6b273b1608f6e72d3054cf8f56f94a7d8d1bf6375
+Classification: 6/6 groups; all order-15 subgroups exported for every group
+Exponent-excluded=[1,2,3,4]; exponent-eligible=[5,6]
+SmallGroup(225,1..5): no cover; subgroup unions=15,45,75,75,75 out of 225
+SmallGroup(225,5): 6 subgroups, union=75/225, no cover
+SmallGroup(225,6): 24 subgroups, all forced by private elements, union=225/225
+MILP: status=optimal, cover=24, dual_bound=24, selected=0..23
+AUDIT RESULT: PASS; complete order-225 enumeration proves alpha(15)=24

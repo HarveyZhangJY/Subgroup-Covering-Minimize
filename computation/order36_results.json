@@ -1,0 +1,323 @@
+{
+  "method": "GroupNames permutation generators + independent closure + exhaustive C6/S3 generation + SciPy HiGHS",
+  "summary": {
+    "n": 6,
+    "groups_enumerated": 14,
+    "minimum_m": 10,
+    "exact": true,
+    "attaining_groups": [
+      [
+        [
+          36,
+          10
+        ],
+        "S3^2",
+        20
+      ],
+      [
+        [
+          36,
+          12
+        ],
+        "S3xC6",
+        12
+      ],
+      [
+        [
+          36,
+          13
+        ],
+        "C2xC3:S3",
+        28
+      ]
+    ]
+  },
+  "groups": [
+    {
+      "smallgroup_id": [
+        36,
+        1
+      ],
+      "structure": "Dic9",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/Dic9.html",
+      "permutation_degree": 36,
+      "group_order_verified": 36,
+      "subgroup_count": 1,
+      "lower_bound": 7,
+      "m": null,
+      "status": "no_cover",
+      "uncovered_elements": 30,
+      "elapsed_seconds": 0.003
+    },
+    {
+      "smallgroup_id": [
+        36,
+        2
+      ],
+      "structure": "C36",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C36.html",
+      "permutation_degree": 36,
+      "group_order_verified": 36,
+      "subgroup_count": 1,
+      "lower_bound": 7,
+      "m": null,
+      "status": "no_cover",
+      "uncovered_elements": 30,
+      "elapsed_seconds": 0.021
+    },
+    {
+      "smallgroup_id": [
+        36,
+        3
+      ],
+      "structure": "C3.A4",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C3.A4.html",
+      "permutation_degree": 18,
+      "group_order_verified": 36,
+      "subgroup_count": 3,
+      "lower_bound": 7,
+      "m": null,
+      "status": "no_cover",
+      "uncovered_elements": 24,
+      "elapsed_seconds": 0.005
+    },
+    {
+      "smallgroup_id": [
+        36,
+        4
+      ],
+      "structure": "D18",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/D18.html",
+      "permutation_degree": 18,
+      "group_order_verified": 36,
+      "subgroup_count": 7,
+      "lower_bound": 7,
+      "m": null,
+      "status": "no_cover",
+      "uncovered_elements": 12,
+      "elapsed_seconds": 0.01
+    },
+    {
+      "smallgroup_id": [
+        36,
+        5
+      ],
+      "structure": "C2xC18",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C2xC18.html",
+      "permutation_degree": 36,
+      "group_order_verified": 36,
+      "subgroup_count": 3,
+      "lower_bound": 7,
+      "m": null,
+      "status": "no_cover",
+      "uncovered_elements": 24,
+      "elapsed_seconds": 0.005
+    },
+    {
+      "smallgroup_id": [
+        36,
+        6
+      ],
+      "structure": "C3xDic3",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C3xDic3.html",
+      "permutation_degree": 12,
+      "group_order_verified": 36,
+      "subgroup_count": 4,
+      "lower_bound": 7,
+      "m": null,
+      "status": "no_cover",
+      "uncovered_elements": 18,
+      "elapsed_seconds": 0.003
+    },
+    {
+      "smallgroup_id": [
+        36,
+        7
+      ],
+      "structure": "C3:Dic3",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C3sDic3.html",
+      "permutation_degree": 36,
+      "group_order_verified": 36,
+      "subgroup_count": 4,
+      "lower_bound": 7,
+      "m": null,
+      "status": "no_cover",
+      "uncovered_elements": 18,
+      "elapsed_seconds": 0.01
+    },
+    {
+      "smallgroup_id": [
+        36,
+        8
+      ],
+      "structure": "C3xC12",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C3xC12.html",
+      "permutation_degree": 36,
+      "group_order_verified": 36,
+      "subgroup_count": 4,
+      "lower_bound": 7,
+      "m": null,
+      "status": "no_cover",
+      "uncovered_elements": 18,
+      "elapsed_seconds": 0.007
+    },
+    {
+      "smallgroup_id": [
+        36,
+        9
+      ],
+      "structure": "C3^2:C4",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C3^2sC4.html",
+      "permutation_degree": 6,
+      "group_order_verified": 36,
+      "subgroup_count": 12,
+      "lower_bound": 7,
+      "m": null,
+      "status": "no_cover",
+      "uncovered_elements": 18,
+      "elapsed_seconds": 0.012
+    },
+    {
+      "smallgroup_id": [
+        36,
+        10
+      ],
+      "structure": "S3^2",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/S3^2.html",
+      "permutation_degree": 6,
+      "group_order_verified": 36,
+      "subgroup_count": 20,
+      "lower_bound": 10,
+      "solver_status": 0,
+      "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "m": 10,
+      "witness_masks": [
+        "455",
+        "37449",
+        "83041",
+        "141393",
+        "1611154433",
+        "2282767361",
+        "4563682305",
+        "8631887873",
+        "17249085441",
+        "34380720129"
+      ],
+      "covered_elements": 36,
+      "union_equals_group": true,
+      "status": "optimal",
+      "elapsed_seconds": 0.231
+    },
+    {
+      "smallgroup_id": [
+        36,
+        11
+      ],
+      "structure": "C3xA4",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C3xA4.html",
+      "permutation_degree": 12,
+      "group_order_verified": 36,
+      "subgroup_count": 3,
+      "lower_bound": 7,
+      "m": null,
+      "status": "no_cover",
+      "uncovered_elements": 24,
+      "elapsed_seconds": 0.023
+    },
+    {
+      "smallgroup_id": [
+        36,
+        12
+      ],
+      "structure": "S3xC6",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/S3xC6.html",
+      "permutation_degree": 12,
+      "group_order_verified": 36,
+      "subgroup_count": 12,
+      "lower_bound": 10,
+      "solver_status": 0,
+      "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "m": 10,
+      "witness_masks": [
+        "3591",
+        "42273",
+        "70737",
+        "148617",
+        "1141391489",
+        "2165325953",
+        "4328800385",
+        "9131016321",
+        "17322492033",
+        "34630287489"
+      ],
+      "covered_elements": 36,
+      "union_equals_group": true,
+      "status": "optimal",
+      "elapsed_seconds": 0.045
+    },
+    {
+      "smallgroup_id": [
+        36,
+        13
+      ],
+      "structure": "C2xC3:S3",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C2xC3sS3.html",
+      "permutation_degree": 18,
+      "group_order_verified": 36,
+      "subgroup_count": 28,
+      "lower_bound": 10,
+      "solver_status": 0,
+      "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "m": 10,
+      "witness_masks": [
+        "74053",
+        "84065",
+        "196803",
+        "6553625",
+        "1344279553",
+        "2685408257",
+        "4336915457",
+        "8726282753",
+        "17198809153",
+        "34427376641"
+      ],
+      "covered_elements": 36,
+      "union_equals_group": true,
+      "status": "optimal",
+      "elapsed_seconds": 0.046
+    },
+    {
+      "smallgroup_id": [
+        36,
+        14
+      ],
+      "structure": "C6^2",
+      "source": "https://people.maths.bris.ac.uk/~matyd/GroupNames/1/C6^2.html",
+      "permutation_degree": 36,
+      "group_order_verified": 36,
+      "subgroup_count": 12,
+      "lower_bound": 12,
+      "solver_status": 0,
+      "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "m": 12,
+      "witness_masks": [
+        "63",
+        "150995529",
+        "301992201",
+        "603980937",
+        "1111623681",
+        "1209016833",
+        "1610907777",
+        "8624031745",
+        "8732606977",
+        "9128906881",
+        "22548578325",
+        "45097156629"
+      ],
+      "covered_elements": 36,
+      "union_equals_group": true,
+      "status": "optimal",
+      "elapsed_seconds": 0.02
+    }
+  ]
+}

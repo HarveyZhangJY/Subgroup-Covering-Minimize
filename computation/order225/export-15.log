@@ -1,0 +1,8 @@
+GAP 4.10.2; order=225; groups=6
+done 225 1 exp 225 subs 1 structure C225
+done 225 2 exp 75 subs 4 structure C75 x C3
+done 225 3 exp 45 subs 6 structure (C5 x C5) : C9
+done 225 4 exp 45 subs 6 structure C45 x C5
+done 225 5 exp 15 subs 6 structure C3 x ((C5 x C5) : C3)
+done 225 6 exp 15 subs 24 structure C15 x C15
+finished all 6 groups of order 225

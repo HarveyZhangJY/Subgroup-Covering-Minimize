@@ -1,0 +1,13 @@
+SHA256 covers-12.jsonl: 5af630fdc06e680b7ef107ade80fc5c501160fd4d7a8aae30568b105d2b5d22f (matches partition-approach.md)
+SHA256 solutions-12.jsonl: 695d9b5cb41520a86f7ac1b43af755426c64d8a8daf816ee254e721293980125 (matches partition-approach.md)
+197-group summary: exponent-excluded=108, exported=89, noncoverable=15, coverable=74
+Solver summary: optimal=73, timeout=1, optimal value 17=[184, 193, 194], optimal values >=18=70
+Timeout: SmallGroup(144,196), status=1, dual lower bound=18.000000000000178, constructed cover=20
+Fixed-group check: SmallGroup(144,101), optimal=24
+CERT17 SmallGroup(144,184): status=0, cover=17, dual_bound=17.0, union=144/144
+  selected=[1, 6, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 30, 35, 41]
+CERT17 SmallGroup(144,193): status=0, cover=17, dual_bound=17.0, union=144/144
+  selected=[0, 1, 2, 3, 4, 14, 25, 27, 29, 30, 31, 32, 34, 39, 40, 41, 42]
+CERT17 SmallGroup(144,194): status=0, cover=17, dual_bound=17.000000000000007, union=144/144
+  selected=[16, 17, 18, 19, 20, 21, 22, 23, 33, 34, 38, 52, 53, 54, 55, 74, 77]
+AUDIT RESULT: PASS; all 197 groups are accounted for and every saved selected cover was re-expanded and checked without rerunning GAP or HiGHS.

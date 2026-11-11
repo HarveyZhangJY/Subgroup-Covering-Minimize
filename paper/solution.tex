@@ -1,0 +1,757 @@
+% !TeX program = xelatex
+\documentclass[11pt,a4paper]{article}
+% Uses the Fandol fonts shipped with TeX Live; no system CJK fonts required.
+\usepackage[UTF8,fontset=fandol,heading=true]{ctex}
+\ctexset{
+  section={format=\Large\bfseries\sffamily},
+  subsection={format=\large\bfseries\sffamily},
+  subsubsection={format=\normalsize\bfseries\sffamily}
+}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\geometry{top=2.35cm,bottom=2.35cm,left=2.45cm,right=2.45cm,headheight=14pt}
+\usepackage{booktabs,longtable,array,tabularx,multirow}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!55!black,citecolor=blue!45!black,bookmarksnumbered=true,unicode=true]{hyperref}
+\usepackage{microtype}
+
+\hypersetup{pdftitle={平方阶群的等阶子群覆盖：已证结果与计算认证},pdfauthor={研究协作汇总},pdfsubject={有限群的固定阶子群覆盖}}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.25em}
+\linespread{1.12}
+\allowdisplaybreaks[4]
+\setlist{itemsep=0.25em,topsep=0.35em}
+\renewcommand{\arraystretch}{1.22}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{proposition}[theorem]{命题}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定义}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{说明}
+\newcommand{\alphaN}{\alpha(n)}
+\newcommand{\C}{C}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\smallgap}{\vspace{0.35em}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{平方阶群的等阶子群覆盖}
+\fancyhead[R]{\leftmark}
+\fancyfoot[C]{\thepage}
+\setlength{\headsep}{0.65cm}
+
+\title{\bfseries 平方阶群的等阶子群覆盖\\[0.35em]
+\Large 已证公式、任意 \texorpdfstring{$n$}{n} 的界与完整计算认证}
+\author{依据协作研究报告整理}
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent 设 $n\ge2$，考虑阶为 $n^2$ 的有限群由阶为 $n$ 的子群覆盖所需的最少子群数。\textbf{对用户所要求的所有正整数 $n$ 的存在型精确闭式，本次未能给出，也不以未证猜想冒充答案。}本文严格区分“允许选择群”“固定群”和“任意群”三种量词：若固定 $C_n^2$，则有适用于任意 $n$ 的精确公式 $\mu(n)=\psi(n)$；若允许选择群，则 $n$ 为素数幂或两个不同素数之积 $pq$ 时有精确公式，另有完整计算认证的 $\alpha(12)=17$。一般 $n$ 目前只能收束为 $L(n)\le\alpha(n)\le U(n)\le P(n)$，其中 $U(n)$ 仅是已知构造的有限组合上界，并非精确递归式；本文同时给出 $n=18,20,30$ 的已证区间并列表排除简单自然候选。文中保留 $pq$ 与半直积的完整证明、$n=6$ 的手证要点，以及 $n=12$、$n=15$ 的计算证书、哈希与复现位置。文献结论严格区分“本次检索未找到”“本项目尚未解决”与“已证明闭式不存在”：只有前两项在各自限定范围内成立，最后一项并未证明。
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\section{问题、量词与记号}
+\textbf{结论先行：}本次研究未能给出用户要求的所有正整数 $n$ 的存在型精确闭式，不能伪造这一答案。能够完整回答的是两个不同层次的问题：固定 $C_n^2$ 时，任意 $n$ 都有闭式 $\mu(n)=\psi(n)$；允许选择群时，$n$ 为素数幂或 $pq$（$p,q$ 为不同素数）时有精确公式，孤立值 $\alpha(12)=17$ 也有完整计算认证。除此之外，本文只陈述已证明的界、构造与条件结果，不把数值吻合提升为一般公式。
+
+对有限群 $G$，定义
+\begin{equation}
+ c_n(G)=\min\left\{m:\ G=\bigcup_{i=1}^{m}H_i,\quad H_i\le G,\quad |H_i|=n\right\},
+\end{equation}
+不存在这种覆盖时记 $c_n(G)=\infty$。重复子群不起作用，故总可取覆盖成员两两不同。令
+\begin{equation}
+ \calU_n=\{G:|G|=n^2,\ c_n(G)<\infty\}.
+\end{equation}
+
+\begin{definition}[三种不同读法]
+本文固定使用以下记号。
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.6em]
+  \item \textbf{存在型（允许选择群）}：
+  \begin{equation}
+   \alpha(n)=\min_{|G|=n^2}c_n(G)=\min_{G\in\calU_n}c_n(G).
+  \end{equation}
+  这是本文的主要研究对象：既可以选择 $G$，也可以选择其覆盖。
+  \item \textbf{固定群}：$c_n(G)$ 依赖于事先给定的 $G$。特别地，记
+  \begin{equation}
+   \mu(n)=c_n(C_n\times C_n)=c_n(C_n^2).
+  \end{equation}
+  固定群公式不能自动替代 $\alpha(n)$。
+  \item \textbf{任意群}：若要求对所有 $|G|=n^2$ 给出同一个有限答案，通常无解。例如循环群 $C_{n^2}$ 的生成元不属于任何 $n$ 阶子群，故 $c_n(C_{n^2})=\infty$。若只在可覆盖群类上讨论统一最坏值，则应另写
+  \begin{equation}
+   \beta(n)=\max_{G\in\calU_n}c_n(G),
+  \end{equation}
+  它与 $\alpha(n)$ 又是不同问题，本文不声称已求出 $\beta(n)$ 的一般公式。
+\end{enumerate}
+\end{definition}
+
+例如后文将证明 $\alpha(6)=10$，而 $\mu(6)=12$；这正说明量词不可省略。任意可覆盖群还满足必要条件
+\begin{equation}\label{eq:exponent}
+ G\in\calU_n\quad\Longrightarrow\quad \exp(G)\mid n,
+\end{equation}
+因为每个元素都属于某个 $n$ 阶子群。该条件并不充分，$C_3\times A_4$ 就是指数为 $6$ 的整除性满足、却不能由六阶子群覆盖的例子。
+
+\section{主要结论与结论边界}
+\subsection{精确结果}
+以下公式是现有共享成果已经证明或完整认证的内容：
+\begin{align}
+ \alpha(n)&\ge n+1,&&\text{等号当且仅当覆盖形成等阶子群划分};
+ \label{eq:summary-lower}\\
+ \alpha(p^a)&=p^a+1,&&p\ \text{为素数},\ a\ge1;
+ \label{eq:summary-primepower}\\
+ \mu(n)&=\prod_{p^a\parallel n}p^{a-1}(p+1)
+       =n\prod_{p\mid n}\left(1+\frac1p\right);
+ \label{eq:summary-fixed}\\
+ \alpha(pq)&=\begin{cases}
+   pq+q+1,&p\mid q-1,\\[2pt]
+   (p+1)(q+1),&p\nmid q-1,
+ \end{cases}
+ &&p<q\ \text{均为素数}.
+ \label{eq:summary-pq}
+\end{align}
+此外，$\alpha(6)=10$ 有独立手证，$\alpha(12)=17$ 与 $\alpha(15)=24$ 有覆盖全部相应阶群的可审计计算证书；其中 $15=3\cdot5$ 属于式 \eqref{eq:summary-pq} 的 $p\nmid q-1$ 分支。
+
+\subsection{任意 \texorpdfstring{$n$}{n} 当前能安全写出的结论}\label{sec:general-enclosure}
+设 $p_{\min}(n)$ 为 $n$ 的最小素因子，定义基础直积上界与通用下界
+\begin{equation}\label{eq:LP-definition}
+ P(n):=\prod_{p^a\parallel n}(p^a+1),\qquad
+ L(n):=\begin{cases}
+ n+1,&n\ \text{为素数幂},\\
+ n+p_{\min}(n),&n\ \text{不是素数幂}.
+ \end{cases}
+\end{equation}
+后文证明 $L(n)\le\alpha(n)\le P(n)$。上界还可用直积规则改进：对任意正整数 $a,b\ge2$，不要求互素，均有
+\begin{equation}\label{eq:summary-product}
+ \alpha(ab)\le\alpha(a)\alpha(b).
+\end{equation}
+另有半直积标量作用上界：若 $p$ 为素数、$b$ 为素数幂且 $p\mid b-1$，则
+\begin{equation}\label{eq:summary-semidirect}
+ \alpha(pb)\le pb+b+1.
+\end{equation}
+
+为完整记录当前所有构造的组合效果，对每个整数 $d\ge2$，令 $u_0(d)$ 为下列所有适用数值的最小值：$P(d)$；素数幂情形的 $d+1$；$d=pq$ 时式 \eqref{eq:summary-pq} 的精确值；$d=pb$ 且满足式 \eqref{eq:summary-semidirect} 的假设时的 $pb+b+1$；以及 $d=12$ 时的 $17$。再定义
+\begin{equation}\label{eq:U-definition}
+ U(n):=\min\left\{\prod_{i=1}^{k}u_0(d_i):
+ n=d_1\cdots d_k,\ k\ge1,\ d_i\ge2\right\}.
+\end{equation}
+单因子分解 $k=1$ 保证极小值存在。由直积规则得到本项目的通用收束区间
+\begin{equation}\label{eq:summary-general}
+ \boxed{L(n)\le\alpha(n)\le U(n)\le P(n).}
+\end{equation}
+\textbf{$U(n)$ 仅为当前已知构造的有限组合上界，绝不是 $\alpha(n)$ 的精确递归式；$\alpha(n)=U(n)$ 尚无一般下界证明。}若某个覆盖群的正规 Sylow 结构已知，还可使用第 \ref{sec:sylow} 节的逐群加强下界，但不能把条件下界无条件套给 $\alpha(n)$。
+
+\begin{remark}[未解决部分]
+\textbf{任意 $n$ 的一般精确闭式本次未能给出。}特别是混合素数幂以及至少三个不同素因子的情形，现有成果没有统一精确公式。式 \eqref{eq:summary-general} 的两端一般不相等，简单自然猜测的反例见表 \ref{tab:counterexamples}。本次文献检索未找到存在型的一般闭式，但这既不等于证明文献中绝对不存在，也不等于证明不存在任何闭式。
+\end{remark}
+
+\section{文献研究程度与证据等级}
+\subsection{证据分级}
+本文将外部文献证据区分为：
+\begin{itemize}[leftmargin=1.8em]
+  \item \textbf{A 级（全文已读）：}已核对原文的定理、假设和页码，可以精确转录。
+  \item \textbf{B 级（书目、摘要或专家评论已核对，全文未得）：}只使用不同来源一致支持的内容，不虚构定理号、页码或未核实的构造。
+\end{itemize}
+手证、显式构造和完整计算证书另行标明，不与上述外部文献等级混同。
+
+\begin{longtable}{L{0.25\textwidth}L{0.10\textwidth}L{0.55\textwidth}}
+\caption{最直接相关文献及其在本问题中的作用}\label{tab:literature}\\
+\toprule
+文献 & 等级 & 已核实范围与用途\\
+\midrule
+\endfirsthead
+\toprule
+文献 & 等级 & 已核实范围与用途\\
+\midrule
+\endhead
+Isaacs (1973), \emph{Equally partitioned groups} \cite{Isaacs1973} & A &
+Theorem 6（p.111，证明续至 p.112）及 p.109 的逆方向给出：有限群有等阶真子群划分，当且仅当它是非循环、指数为某素数 $p$ 的 $p$ 群。Theorem 10 还给出非阿贝尔例，故一般等阶划分群不全是初等阿贝尔群。\\
+Jungnickel (1999), \emph{On small congruence covers} \cite{Jungnickel1999} & B &
+出版方摘要转录与 zbMATH 专家评论一致支持：$|G|=s^2$，$e=r-s-1$，$p$ 为 $s$ 的最小素因子，则 $e\le p-2$ 蕴含 $G$ 初等阿贝尔且覆盖几何化。本文用它得到非素数幂下界和本题等号群分类。全文受访问防护阻断，故不标未核实的定理号。\\
+Jungnickel--Storme (2001), \emph{Packing and covering groups with subgroups} \cite{JungnickelStorme2001} & B &
+已核实范围是固定阿贝尔 $p$ 群中 $p^t$-cover/packing 的上下界及初等阿贝尔刻画，不是任意 $n$ 的存在型一般公式。评论没有可安全转录的精确界，本文不作补写。\\
+Velasquez-Berroteran (2022)，学位论文/arXiv 预印本 \cite{Velasquez2022} & A &
+Theorem 13 给出等阶覆盖的指数必要条件；论文主要研究存在性，并把 equal covering number 列为后续研究方向。它不是同行评审期刊论文。\\
+Foguel 等，\emph{Concerning equally covered groups} \cite{Foguel2025} & B &
+已核实摘要涉及等阶覆盖的存在性与结构，未据此声称含有最小数公式；正文未取得。\\
+\bottomrule
+\end{longtable}
+
+Jungnickel 论文关于 sharp 构造的二手转录存在一处数量差异：出版方摘要给出 excess $e=p$ 的构造，zbMATH 评论称 $p$ 群情形有 $e=p-1$ 的 sharp 例。两者对本文实际使用的“小覆盖必初等阿贝尔”没有冲突；在正文未取得前，本文不据此增加任何精确最小值结论。
+
+\subsection{检索范围与限制}
+共享文献报告组合检索了 subgroup/equal/congruence covering、fixed-order subgroups、group partition、packing 等英文词及有限群、同阶子群覆盖、循环子群覆盖等中文词，追踪了出版方页面、Crossref、OpenAlex、zbMATH、arXiv、机构库、OEIS 与 Stack Exchange。一般 covering number 允许成员异阶，不能直接套用；OEIS 的计数解释也不能替代覆盖最小性的证明。
+
+访问限制包括 Jungnickel (1999) 正文被防护拦截、Jungnickel--Storme (2001) 出版页返回 403、Foguel 等论文正文连接失败。因此准确结论是：\textbf{在本次检索和复核范围内，已有等阶划分分类、小覆盖结构定理、素数幂构造和若干固定群界，但未找到任意 $n$ 的存在型一般精确闭式。}
+
+\subsection{OEIS 与前向引文定向反查的限定说明}\label{sec:sequence-lookup}
+2026 年 11 月 11 日的定向反查使用已认证数列
+\begin{equation}
+ 3,4,5,6,10,8,9,10,16,17,24,
+\end{equation}
+分别对应 $n=2,3,4,5,6,7,8,9,10,12,15$。OEIS 的完整普通查询、前八项普通查询和显式 \texttt{seq:} 连续序列查询均返回 JSON \texttt{null}；精确短语 \texttt{"congruence cover"} 也未识别出本题条目。有序非连续 \texttt{subseq:} 查询报告 $444$ 条宽泛命中，只查看了前 $110$ 条，所见名称均不指向本题；因此并未逐条排除全部非连续子序列命中。较短数值片段的偶然命中属于其他主题，不能作为公式证据。
+
+对 Jungnickel (1999) 的 \href{https://openalex.org/W1603700654}{OpenAlex 前向引文}定向反查仅返回 Jungnickel--Storme (2001)；后者的 \href{https://openalex.org/W2083823125}{OpenAlex 记录}返回六条前向引文，Semantic Scholar 另有重复或预印本版本。可访问题名和摘要涉及对称群覆盖、极大无赘覆盖、相关环与 blocking sets，未显示任意 $n$ 的一般闭式、按素因子递归或有限优化公式。精确关键词检索也未找到针对本文精确量词的明确开放性原文。
+
+这些结果只限于所查数据库、实际返回记录以及可访问的题名/摘要，并未穷尽所有引文或全文，数据库之间的被引计数也不一致。最终必须把三种命题严格分开：
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.6em]
+ \item \textbf{未找到：}在本次已复核的原始文献和上述定向检索范围内，未找到任意 $n$ 的存在型一般精确闭式，也未找到权威原文把这一精确量词的一般公式问题正式宣布为 open problem。这不是穷尽全部文献的声明。
+ \item \textbf{本项目未解决：}现有证明在复合素数幂、至少三个素因子及非正规 Sylow 情形确有缺口，因此本项目没有给出任意 $n$ 的精确公式。这是本次研究状态的记录，不冒充学界公认的开放性声明。
+ \item \textbf{未证明闭式不存在：}后文反例只否定具体自然候选，完全没有排除更复杂的算术公式或分段公式；本文绝不声称“已证明一般闭式不存在”。
+\end{enumerate}
+详细查询与审查边界见 \path{research/sequence-lookup.md}。
+
+\section{普适下界、素数幂与固定群公式}
+\subsection{普适计数下界与等号}
+\begin{theorem}\label{thm:counting}
+若 $|G|=n^2$ 且 $m$ 个 $n$ 阶子群 $H_1,\dots,H_m$ 覆盖 $G$，则
+\begin{equation}\label{eq:counting}
+ m\ge n+1.
+\end{equation}
+等号成立当且仅当每个非单位元恰属于一个 $H_i$；等价地，$H_i\cap H_j=\{1\}$（$i\ne j$）且它们覆盖 $G$，即形成等阶子群划分。
+\end{theorem}
+\begin{proof}
+所有子群均含单位元，故
+\begin{equation}
+ n^2=\left|\bigcup_{i=1}^mH_i\right|
+ \le 1+\sum_{i=1}^m(|H_i|-1)=1+m(n-1),
+\end{equation}
+从而 $m\ge(n^2-1)/(n-1)=n+1$。若 $m=n+1$，并集估计中不能有重复计数，故非单位元恰出现一次；反之，等阶划分立即给出 $1+(n+1)(n-1)=n^2$ 个元素。
+\end{proof}
+
+等号还具有乘积结构：任意两个不同分量 $H,K$ 满足
+\begin{equation}
+ |HK|=\frac{|H||K|}{|H\cap K|}=n^2=|G|,
+ \qquad\text{故 }G=HK.
+\end{equation}
+
+\subsection{素数幂精确公式}
+\begin{theorem}\label{thm:primepower}
+对任意 $n\ge2$，
+\begin{equation}\label{eq:primepower-iff}
+ \alpha(n)=n+1\quad\Longleftrightarrow\quad n\ \text{是素数幂}.
+\end{equation}
+若 $n=p^a$，最优见证群为 $\F_{p^a}^2$ 的加法群，同构于 $C_p^{2a}$。
+\end{theorem}
+\begin{proof}
+先证充分性。令 $q=p^a$，$G=(\F_q^2,+)$。取
+\begin{equation}
+ H_t=\{(x,tx):x\in\F_q\}\quad(t\in\F_q),
+ \qquad H_\infty=\{(0,x):x\in\F_q\}.
+\end{equation}
+它们恰是全部 $\F_q$ 一维子空间，共有
+\begin{equation}
+ \frac{q^2-1}{q-1}=q+1
+\end{equation}
+个。每个子群阶为 $q=n$，两两只交于零且覆盖全群，故由定理 \ref{thm:counting} 得 $\alpha(q)=q+1$。
+
+反向地，若 $\alpha(n)=n+1$，等号覆盖形成等阶真子群划分。Isaacs 的分类定理 \cite{Isaacs1973} 说明 $G$ 是指数为某素数 $p$ 的 $p$ 群，因此 $|G|=n^2$ 与 $|H_i|=n$ 都是 $p$ 的幂，故 $n$ 必为素数幂。
+\end{proof}
+
+进一步，在本题等号情形使用 Jungnickel 小覆盖定理的 $e=0$ 特例 \cite{Jungnickel1999}，可得 $G$ 初等阿贝尔，因而
+\begin{equation}
+ n=p^a,\qquad G\cong C_p^{2a}.
+\end{equation}
+这里必须注意：一般等阶划分群可以非阿贝尔，不能只用 Isaacs 分类就断言初等交换；本题额外的 $n^2/n/n+1$ 小覆盖条件才使 Jungnickel 结论适用。
+
+\subsection{非素数幂的文献下界}
+\begin{proposition}\label{prop:jungnickel-lower}
+若 $n$ 不是素数幂，$p$ 是其最小素因子，则
+\begin{equation}\label{eq:jungnickel-lower}
+ \alpha(n)\ge n+p.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Jungnickel 的小同余覆盖定理（证据 B，见第 \ref{tab:literature} 表）表明：若 $s^2$ 阶群能由 $r\le s+p-1$ 个 $s$ 阶子群覆盖，其中 $p$ 为 $s$ 的最小素因子，则该群必为初等阿贝尔群。若 $n$ 不是素数幂，则 $n^2$ 阶群不可能是初等阿贝尔群，故不可能存在 $m\le n+p-1$ 的覆盖，即 $m\ge n+p$。对所有群取最小值得式 \eqref{eq:jungnickel-lower}。
+\end{proof}
+该下界不是一般等式：$\alpha(6)=10>8$，$\alpha(12)=17>14$，$\alpha(15)=24>18$。
+
+\subsection{固定 \texorpdfstring{$C_n^2$}{Cn 平方}的精确公式}
+\begin{theorem}\label{thm:fixed}
+固定 $G=C_n^2$ 时，最小覆盖数恰为全部 $n$ 阶循环子群的个数：
+\begin{equation}\label{eq:fixed-formula}
+ \mu(n)=\frac{n^2\prod_{p\mid n}(1-p^{-2})}{\varphi(n)}
+ =n\prod_{p\mid n}\left(1+\frac1p\right)
+ =\prod_{p^a\parallel n}p^{a-1}(p+1).
+\end{equation}
+\end{theorem}
+\begin{proof}
+\textbf{必要性。} 若 $x\in C_n^2$ 的阶为 $n$，且 $x$ 属于某个 $n$ 阶子群 $H$，则 $\langle x\rangle\subseteq H$ 且两者同阶，故 $H=\langle x\rangle$。因此每一个 $n$ 阶循环子群在任何合法覆盖中都不可省略。
+
+\textbf{充分性。} 在准素分量 $C_{p^a}^2$ 中，任意元素可写成 $x=p^t y$，其中 $y$ 至少一个坐标不被 $p$ 整除，因而 $y$ 的阶为 $p^a$ 且 $x\in\langle y\rangle$。对各 $p^a\parallel n$ 的分量分别这样做，再取所得循环子群的直积，可知每个元素都落在某个 $n$ 阶循环子群中。因此这些必要成员已经构成覆盖。
+
+\textbf{计数。} $C_n^2$ 中 $n$ 阶元素数按准素分量为
+\begin{equation}
+ N_n=\prod_{p^a\parallel n}(p^{2a}-p^{2a-2})
+ =n^2\prod_{p\mid n}(1-p^{-2}).
+\end{equation}
+每个 $n$ 阶循环子群恰有 $\varphi(n)$ 个生成元，不同循环子群的生成元集合互不重叠，故其个数为 $N_n/\varphi(n)$，化简即得式 \eqref{eq:fixed-formula}。
+\end{proof}
+例如 $\mu(4)=6$、$\mu(6)=12$、$\mu(12)=24$、$\mu(15)=24$。OEIS A001615 可核对此循环子群计数序列 \cite{OEISpsi}，但最小性来自上述证明。
+
+\section{任意 \texorpdfstring{$n$}{n} 的构造、下界与直积规则}
+\subsection{初等阿贝尔直积上界}
+\begin{theorem}\label{thm:general-upper}
+若 $n=\prod_{i=1}^r q_i$，其中 $q_i=p_i^{a_i}$，则
+\begin{equation}\label{eq:general-upper}
+ \alpha(n)\le\prod_{i=1}^r(q_i+1).
+\end{equation}
+\end{theorem}
+\begin{proof}
+对每个 $i$，令 $A_i=(\F_{q_i}^2,+)$，并取定理 \ref{thm:primepower} 中的 $q_i+1$ 条直线，记其族为 $\calL_i$。令 $G=\prod_iA_i$，则 $|G|=n^2$。对每种选择 $L_i\in\calL_i$，构造
+\begin{equation}
+ H_{(L_1,\dots,L_r)}=L_1\times\cdots\times L_r.
+\end{equation}
+其阶为 $\prod_iq_i=n$，总数为 $\prod_i(q_i+1)$。任给 $g=(g_1,\dots,g_r)\in G$，逐坐标选取含 $g_i$ 的直线 $L_i$，便有 $g\in H_{(L_1,\dots,L_r)}$。故这些子群覆盖 $G$。
+\end{proof}
+这是本次共享成果中的显式初等构造，不应冒充已核实的文献最优公式。
+
+\subsection{直积规则}
+\begin{proposition}\label{prop:product}
+对任意 $a,b\ge2$，
+\begin{equation}\label{eq:product-rule}
+ \alpha(ab)\le\alpha(a)\alpha(b).
+\end{equation}
+\end{proposition}
+\begin{proof}
+分别取 $A$、$B$ 的最优覆盖 $\{K_i\}_{i=1}^r$、$\{L_j\}_{j=1}^s$，其中 $|A|=a^2$、$|B|=b^2$。则
+\begin{equation}
+ A\times B=\bigcup_{i,j}(K_i\times L_j),
+ \qquad |K_i\times L_j|=ab,
+\end{equation}
+共用 $rs$ 个子群，故得结论。证明未使用 $\gcd(a,b)=1$。
+\end{proof}
+因此可以按 $n=\prod_jd_j$ 分块，用已知的素数幂或 $pq$ 块降低式 \eqref{eq:general-upper}。例如
+\begin{equation}
+ 32=30+2\le\alpha(30)\le\alpha(6)\alpha(5)=10\cdot6=60,
+\end{equation}
+优于直接直积上界 $(2+1)(3+1)(5+1)=72$。这只是当前已证区间，不表示端点之一必为精确值。
+
+\subsection{素数乘素数幂的半直积上界}\label{sec:semidirect}
+\begin{theorem}\label{thm:semidirect-upper}
+若 $p$ 为素数，$b$ 为素数幂，且 $p\mid b-1$，则
+\begin{equation}\label{eq:semidirect-upper}
+ \boxed{\alpha(pb)\le pb+b+1.}
+\end{equation}
+这只是构造上界，不据此断言精确值。
+\end{theorem}
+\begin{proof}
+令 $Q=\F_b^2$、$A=\F_p^2$ 均为加法群。因 $\F_b^\times$ 是阶 $b-1$ 的循环群，可取 $p$ 阶元 $\zeta\in\F_b^\times$，并定义同态
+\begin{equation}
+ \chi:A\longrightarrow\F_b^\times,\qquad \chi(x,y)=\zeta^y,
+\end{equation}
+其中 $y\in\F_p$ 按模 $p$ 的整数指数理解。让 $A$ 通过 $\chi$ 在 $Q$ 上作标量乘法，得到 $G=Q\rtimes A$。这里 $A/\ker\chi\cong C_p$ 只是映到乘法群 $\langle\zeta\rangle$，不要求两个域具有相同特征。
+
+核直线及其补直线写为
+\begin{equation}
+ K=\{(x,0):x\in\F_p\},\qquad
+ L_t=\{(ty,y):y\in\F_p\}\quad(t\in\F_p).
+\end{equation}
+于是 $A=K\cup\bigcup_{t\in\F_p}L_t$，且 $\chi(ty,y)=\zeta^y$，故 $\chi$ 在每个 $L_t$ 上单射。覆盖分两类选取。
+
+首先，对 $Q$ 的每条 $\F_b$-直线 $M$，取
+\begin{equation}
+ H_{0,M}=M\times K.
+\end{equation}
+因为 $K$ 在 $Q$ 上作用平凡，这是阶 $pb$ 的子群。$Q$ 共有 $b+1$ 条直线，故这 $b+1$ 个子群覆盖 $Q\rtimes K$，特别覆盖整个 $Q$。
+
+其次，对每个 $t\in\F_p$，任选一条 $Q$-直线 $M_t$，令 $N_t=M_t\rtimes L_t$。标量作用保持 $M_t$，故 $N_t$ 的阶为 $pb$。取 $Q/M_t$ 的 $b$ 个陪集代表 $u$，选取全部共轭子群 $uN_tu^{-1}$。固定 $\ell\in L_t\setminus\{1\}$，记 $\lambda=\chi(\ell)\ne1$。在共轭子群 $uN_tu^{-1}$ 中，$A$-坐标为 $\ell$ 的元素恰组成
+\begin{equation}\label{eq:semidirect-fibre}
+ \bigl((1-\lambda)u+M_t\bigr)\ell.
+\end{equation}
+由于 $1-\lambda\in\F_b^\times$，当 $u$ 遍历 $Q/M_t$ 的代表时，式 \eqref{eq:semidirect-fibre} 遍历 $\ell$ 上方纤维 $Q\ell$ 的全部 $b$ 个 $M_t$-陪集。因此这 $b$ 个共轭子群覆盖该纤维；让 $\ell$ 遍历 $L_t\setminus\{1\}$，即覆盖 $Q\rtimes L_t$ 在 $Q$ 外的全部元素。
+
+固定 $t$ 时，不同共轭在非单位纤维中给出不同陪集；不同 $t$ 又给出不同投影 $L_t$，并与第一类的投影 $K$ 不同。故所选子群两两不同，总数恰为
+\begin{equation}
+ (b+1)+pb=pb+b+1,
+\end{equation}
+其并集为 $G$，证得式 \eqref{eq:semidirect-upper}。
+\end{proof}
+
+取 $(p,b)=(2,9)$，与通用下界合并可得
+\begin{equation}\label{eq:n18-upper}
+ \boxed{20=18+2\le\alpha(18)\le18+9+1=28.}
+\end{equation}
+若所选覆盖群的 Sylow $3$ 子群正规，引理 \ref{lem:normal-sylow} 还给出逐群下界 $m\ge18+9=27$；该条件并未对所有可能见证群证明，故全局下界仍为 $20$，$27$ 与 $28$ 也都不能写成精确值。
+
+但不能把 $p$ 换成复合素数幂而机械沿用此证明。若 $a=p^r$ 且要求 $\ker\chi$ 是 $\F_a^2$ 的一条直线，则 $A/\ker\chi\cong C_p^r$ 必须嵌入循环群 $\F_b^\times$，这迫使 $r=1$。特别地，$n=20$ 的形式分解 $a=4,b=5$ 虽给出形式数 $26$，却有 $\F_4^2/\text{直线}\cong C_2^2$，不能嵌入 $\F_5^\times\cong C_4$，所以该构造\textbf{不能}推出 $\alpha(20)\le26$。由直积规则与通用下界只有安全区间
+\begin{equation}\label{eq:n20-upper}
+ \boxed{22=20+2\le\alpha(20)\le\alpha(4)\alpha(5)=5\cdot6=30.}
+\end{equation}
+若某个覆盖群的 Sylow $5$ 子群正规，则 $20=4\cdot5$、$4<5$ 使引理 \ref{lem:normal-sylow} 给出 $m\ge26$；但正规性并非已证的全局必要条件，故不能把 $26$ 提升为 $\alpha(20)$ 的无条件下界。这不排除其他方法改进 $20$ 的上界，也不把 $26$、$28$ 或 $30$ 写成精确值。简单改用 $C_4^2$ 也不能挽救形式构造：核与全部补无法覆盖元素 $(1,2)$。
+
+\subsection{正规 Sylow 子群时的逐群加强下界}\label{sec:sylow}
+\begin{lemma}\label{lem:normal-sylow}
+写 $n=aq^b$，$q\nmid a$。若 $G$ 的 Sylow $q$ 子群 $Q$ 正规，则任何由 $m$ 个 $n$ 阶子群组成的覆盖满足
+\begin{equation}\label{eq:normal-sylow}
+ m\ge n+q^b.
+\end{equation}
+若进一步 $b=1$ 且 $a<q$，则严格有
+\begin{equation}\label{eq:normal-sylow-strict}
+ m\ge n+q+1.
+\end{equation}
+\end{lemma}
+\begin{proof}
+因 $Q\triangleleft G$ 且 $|Q|=q^{2b}$，对任意 $n$ 阶子群 $H$，$H\cap Q$ 是 $H$ 的 Sylow $q$ 子群，故 $|H\cap Q|=q^b$。于是
+\begin{equation}
+ |G\setminus Q|=q^{2b}(a^2-1),
+ \qquad |H\setminus Q|=q^b(a-1).
+\end{equation}
+即使允许重复覆盖，也必有
+\begin{equation}
+ m q^b(a-1)\ge q^{2b}(a^2-1),
+\end{equation}
+即 $m\ge q^b(a+1)=n+q^b$。式 \eqref{eq:normal-sylow-strict} 的等号排除需要纤维图论证，在第 \ref{sec:pq-lower} 节对 $a=p<q$ 完整给出；同一论证适用于这里的一般 $a<q$。
+\end{proof}
+此引理是对具有指定正规 Sylow 结构的固定 $G$ 的下界，不能在未验证正规性时直接当作所有 $G$ 的统一全局下界。
+
+\subsection{推广严格下界时的混合方向陪集障碍}\label{sec:mixed-cosets}
+设 $p$ 为素数，$b=\ell^s$ 为素数幂，$p<b$ 且 $p\ne\ell$。若 $|G|=p^2b^2$，阶 $b^2$ 的正规 Sylow $\ell$-子群为 $Q$，则由 $m$ 个阶 $pb$ 的子群 $H_i$ 覆盖 $G$ 时，引理 \ref{lem:normal-sylow} 给出
+\begin{equation}\label{eq:pb-lower}
+ m\ge pb+b.
+\end{equation}
+这里不需要 $Q$ 初等阿贝尔。与原 $pq$ 证明不同，现有论证不能一般地把式 \eqref{eq:pb-lower} 加强为 $m\ge pb+b+1$，障碍如下。
+
+若式 \eqref{eq:pb-lower} 取等号，令 $A=G/Q$、$K_i=H_iQ/Q$、$M_i=H_i\cap Q$。无重复计数迫使 $A\cong C_p^2$，且每条阶 $p$ 的商群直线 $K$ 上方恰有 $b$ 个覆盖子群。固定 $k\in K\setminus\{1\}$，这些子群在纤维 $\pi^{-1}(k)$ 中的交把该纤维划分成 $b$ 个 $M_i$-陪集；用 $Q$ 的作用识别纤维与 $Q$，就得到 $Q$ 的一个由 $b$ 个阶 $b$ 子群陪集组成的划分。同一 $M_i$ 可以重复，陪集也不必经过单位元。
+
+若额外知道每个固定 $K$ 所对应的陪集划分都同方向，则全部覆盖至多产生 $p+1$ 个不同的 $M_i$。但所有 $M_i$ 必须覆盖 $Q$，而不同 $M_i$ 的个数 $r$ 满足
+\begin{equation}
+ b^2\le1+r(b-1),\qquad\text{故 }r\ge b+1,
+\end{equation}
+与 $p+1<b+1$ 矛盾。因此缺失的正是“同方向”结论，而且该结论对一般陪集划分并不成立。取 $b=4$、$Q=\F_2^4$，标准基为 $e_1,e_2,e_3,e_4$，令
+\begin{equation}
+ U=\langle e_1,e_2\rangle,\qquad W=\langle e_2,e_3\rangle .
+\end{equation}
+四个四阶陪集
+\begin{equation}\label{eq:mixed-coset-example}
+ U,\qquad e_3+U,\qquad e_4+W,\qquad e_1+e_4+W
+\end{equation}
+确实划分 $Q$：前两个划分 $x_4=0$ 的八点，后两个划分 $x_4=1$ 的八点；但方向为 $U,U,W,W$，且 $U\ne W$。第一个陪集还经过单位元，故附加这一条件也不能排除混合方向。
+
+例 \eqref{eq:mixed-coset-example} 只否定原 $pq$ 等号证明中的关键引理，\textbf{不是}整个群由 $pb+b$ 个子群覆盖的反例。因此目前既不能宣称一般加强下界已经证明，也不能宣称它被否定；定理 \ref{thm:semidirect-upper} 的右端仍只能写作上界，不能写成 $\alpha(pb)=pb+b+1$。
+
+\section{\texorpdfstring{$n=pq$}{n=pq} 的完整分段公式}
+\subsection{Sylow 结构与下界}\label{sec:pq-lower}
+设 $p<q$ 为素数，$|G|=p^2q^2$ 且 $G\in\calU_{pq}$。由 $\exp(G)\mid pq$，两个 Sylow 子群必为
+\begin{equation}
+ P\cong C_p^2,\qquad Q\cong C_q^2.
+\end{equation}
+若 $Q$ 不正规，Sylow 定理给出 $n_q\mid p^2$、$n_q\equiv1\pmod q$。由 $q>p$，只能 $n_q=p^2$ 且 $q\mid p+1$，故唯一例外是 $(p,q)=(2,3)$。该例外由第 \ref{sec:n6} 节的完整手证处理；非正规 $Q$ 的必要候选 $C_3\times A_4$ 实际不可覆盖。以下设 $Q$ 正规。
+
+\begin{proposition}\label{prop:pq-lower}
+若 $Q\triangleleft G$，则
+\begin{equation}\label{eq:pq-lower}
+ m\ge pq+q+1.
+\end{equation}
+\end{proposition}
+\begin{proof}
+引理 \ref{lem:normal-sylow} 已给 $m\ge pq+q$。假设等号 $m=q(p+1)$，则计数迫使所有 $H\setminus Q$ 两两不交。令 $B=G/Q$，$|B|=p^2$，并把 $Q\cong\F_q^2$ 看作二维仿射平面。
+
+固定 $k\in B\setminus\{1\}$，其纤维有 $q^2$ 个元素。若 $k\in HQ/Q$，则 $H$ 在该纤维中的 $q$ 个元素组成 $M_H=H\cap Q$ 的一个陪集。无重复计数迫使该纤维恰由 $q$ 个互不相交的此类陪集覆盖。不同方向的仿射直线陪集必相交，故这些陪集方向相同，记为 $M_k=M_H$。
+
+在 $B\setminus\{1\}$ 上作图：每个实际出现的像 $K=HQ/Q$ 将 $K\setminus\{1\}$ 连成团。方向 $M_k$ 在每个连通分量上恒定。设某分量有 $s$ 个顶点，且有 $r$ 个\textbf{覆盖子群}的像落入其中；同一像的不同实现分别计数。每个顶点的纤维恰由 $q$ 个子群覆盖，故关联计数给出
+\begin{equation}
+ r(p-1)=qs.
+\end{equation}
+该分量至少含一个像 $K$，故 $s\ge p-1$，从而 $r\ge q$。若共有 $c$ 个分量，则
+\begin{equation}
+ q(p+1)=m=\sum r_i\ge cq,
+\end{equation}
+所以 $c\le p+1$，所有 $M_H$ 至多有 $p+1$ 条不同直线。
+
+另一方面，为覆盖 $Q$ 本身，所有 $H\cap Q$ 必须覆盖 $Q$，至少需要 $q+1$ 条不同直线。因 $p+1<q+1$，矛盾。故等号不可能，式 \eqref{eq:pq-lower} 成立。
+\end{proof}
+
+\subsection{\texorpdfstring{$p\mid q-1$}{p|q-1}：半直积构造}
+取 $\zeta\in\F_q^\times$ 为 $p$ 阶元，令 $Q=\F_q^2$，$P=\langle a\rangle\times\langle b\rangle\cong C_p^2$，并定义标量作用
+\begin{equation}
+ a:(x,y)\mapsto(x,y),\qquad
+ b:(x,y)\mapsto(\zeta x,\zeta y).
+\end{equation}
+令 $G=Q\rtimes P$。$P$ 有 $p+1$ 条直线，其中 $L_0=\langle a\rangle$ 是作用核。
+
+对 $Q$ 的每条直线 $M$，选取
+\begin{equation}
+ H_{0,M}=M\times L_0.
+\end{equation}
+这 $q+1$ 个 $pq$ 阶子群覆盖整个 $Q\rtimes L_0$。对其余 $p$ 条直线 $L\ne L_0$，任选一条 $Q$ 直线 $M_L$，令 $N_L=M_L\rtimes L$，并用 $Q/M_L$ 的 $q$ 个陪集代表共轭 $N_L$。固定 $v\in L\setminus\{1\}$，写其作用为 $A_v$；共轭后相应陪集为
+\begin{equation}
+ (I-A_v)(x+M_L).
+\end{equation}
+由于 $L$ 通过非平凡标量特征作用，$I-A_v$ 在一维商 $Q/M_L$ 上可逆，故 $q$ 个代表给出该纤维的全部互异陪集并覆盖整条纤维。每条 $L$ 用 $q$ 个子群，总数为
+\begin{equation}\label{eq:pq-action-count}
+ (q+1)+pq=pq+q+1.
+\end{equation}
+与命题 \ref{prop:pq-lower} 结合，得到此分支的精确值。
+
+\subsection{\texorpdfstring{$p\nmid q-1$}{p not|q-1}：可覆盖群必为直积}
+本分支仍有 $G=Q\rtimes P$。若某条 $P$ 直线 $L$ 在 $Q$ 上非平凡作用，并有一个 $pq$ 阶子群 $H$ 以 $L$ 为像，则 $M=H\cap Q$ 必为 $L$ 不变直线。$L$ 在 $M$ 与 $Q/M$ 上的作用阶都整除 $\gcd(p,q-1)=1$，故两处作用平凡，从而作用矩阵 $A$ 满足
+\begin{equation}
+ (A-I)^2=0.
+\end{equation}
+另一方面 $A^p=I$，而 $X^p-1$ 在特征 $q$ 下无重根，所以 $A$ 半单；半单且幂单只能有 $A=I$，矛盾。因此非平凡作用的 $L$ 不可能作为覆盖子群的像，其上方元素无法被覆盖。故可覆盖群的所有作用均平凡，只能是
+\begin{equation}
+ G=P\times Q\cong C_p^2\times C_q^2\cong C_{pq}^2.
+\end{equation}
+在该直积中，每个 $pq$ 阶子群唯一写成 $L\times M$。两个投影均非零的元素迫使每个 $L\times M$ 出现在覆盖中，故全部 $(p+1)(q+1)$ 个子群必要且充分。
+
+综上，
+\begin{equation}\label{eq:pq-final}
+ \boxed{\alpha(pq)=
+ \begin{cases}
+ pq+q+1,&p\mid q-1,\\[3pt]
+ (p+1)(q+1),&p\nmid q-1.
+ \end{cases}}
+\end{equation}
+该证明已经由独立同行复核逐项检查正规 Sylow 下界、纤维图计数、共轭代表覆盖及直积分类，未发现影响公式的漏洞。数值例包括
+\begin{equation}
+ \alpha(6)=10,\quad \alpha(10)=16,\quad
+ \alpha(15)=24,\quad \alpha(21)=29,\quad \alpha(35)=48.
+\end{equation}
+
+\section{\texorpdfstring{$n=6$}{n=6} 的独立手证要点}\label{sec:n6}
+$pq$ 公式给出 $\alpha(6)=10$，另有不依赖程序的完整分类与计数证明。其要点如下。
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.6em]
+ \item \textbf{必要候选分类。} 可覆盖群必须指数为 $6$，Sylow 子群分别为 $C_3^2$、$C_2^2$。按三阶 Sylow 子群个数及在 $\F_3^2$ 上可同时对角化的作用分类，只需考察
+ \begin{equation}
+ C_6^2,\quad C_6\times S_3,\quad S_3^2,\quad C_2\times D,\quad C_3\times A_4,
+ \end{equation}
+ 其中 $D=C_3^2\rtimes C_2$ 为全反演半直积。这是必要候选表，并非五群全部可覆盖。$C_3\times A_4$ 实际不可由六阶子群覆盖；其 $13$ 个 $C_3$ 子群已经排除至多 $12$ 个成员的假想覆盖。
+ \item \textbf{统一重复计数排除 $k<9$。} 六阶子群只有 $C_6$、$S_3$，均恰含两个三阶元素。前四类候选的三阶元素共有 $8$ 个，故 $k$ 个子群在三阶元素上产生至少 $2k-8$ 次重复；全部 $35$ 个非单位元的总重复量只有 $5k-35$。于是
+ \begin{equation}
+ 5k-35\ge2k-8,
+ \end{equation}
+ 与普适下界 $k\ge7$ 合并，排除 $k=7,8$。
+ \item \textbf{$k=9$ 的等号条件。} 此时总重复量与三阶元素重复量都为 $10$，故每个对合和每个六阶元素必须恰被覆盖一次；若六阶元素共有 $t$ 个、循环六阶子群选了 $c$ 个，则 $t=2c$。
+ \item \textbf{逐群排除九子群覆盖。} $C_6^2$ 由固定群公式需 $12$ 个；$C_6\times S_3$ 有 $18$ 个六阶元素，迫使 $c=9$，但全群仅 $7$ 个对合，九个循环子群必使对合重复；$C_2\times D$ 有 $8$ 个六阶元素，迫使四个循环子群全部出现，而它们共同含有中心对合；$S_3^2$ 的 $12$ 个六阶元素迫使六个循环子群全部出现，剩余含两条混合三阶直线的 $S_3$ 子群，其对合三元组满足模 $3$ 方程 $\ell=r+m=s-m$，总有公共对合，均与等号条件矛盾。
+ \item \textbf{十子群构造。} 在 $C_2\times D$ 中，先取中心 $C_2$ 与 $N=C_3^2$ 的四条直线之直积，得到四个 $C_6$；固定一条直线 $L$，再对 $z^\varepsilon ut$（$\varepsilon\in\{0,1\}$，$u$ 遍历 $N/L$ 的三个陪集代表）取 $\langle L,z^\varepsilon ut\rangle\cong S_3$，得到六个子群。它们覆盖全群，故上界为 $4+6=10$。
+\end{enumerate}
+因此
+\begin{equation}\label{eq:n6-exact}
+ \boxed{\alpha(6)=10.}
+\end{equation}
+独立计算还遍历了 $36$ 阶全部 $14$ 个同构类：四个可覆盖群中，$S_3^2$、$C_6\times S_3$、$C_2\times D$ 的最小值均为 $10$，$C_6^2$ 为 $12$；其余十群不可覆盖。
+
+\section{\texorpdfstring{$n=12$}{n=12} 与 \texorpdfstring{$n=15$}{n=15} 的完整计算认证}
+\subsection{精确集合覆盖模型}
+对固定 $G$，导出全部 $n$ 阶子群 $\calH_n(G)=\{H_1,\dots,H_r\}$，求解
+\begin{align}
+ \min\quad &\sum_{j=1}^{r}x_j \notag\\
+ \text{s.t.}\quad &\sum_{j:g\in H_j}x_j\ge1 &&(g\in G),\label{eq:milp}\\
+ &x_j\in\{0,1\}&&(j=1,\dots,r).\notag
+\end{align}
+模型 \eqref{eq:milp} 的最优值就是 $c_n(G)$。全局认证必须先完整排除或处理全部 $|G|=n^2$ 的同构类；抽样构造只能给上界。
+
+\subsection{\texorpdfstring{$n=12$}{n=12}：197 个 144 阶群全部处理}
+计算使用 GAP 4.10.2 SmallGroupLibrary 导出子群，SciPy 1.13.1 的 \texttt{milp}/HiGHS 求解，单实例时限 $60$ 秒，相对 MIP gap 为 $0$。完整状态为：
+\begin{itemize}
+ \item $197$ 群中，$108$ 群因 $\exp(G)\nmid12$ 排除，其余 $89$ 群全部导出；
+ \item $89$ 群中，$15$ 群的全部十二阶子群仍不能覆盖全群，剩余 $74$ 群可覆盖；
+ \item $74$ 个可覆盖实例中，$73$ 个返回精确最优值；唯一超时实例 \texttt{SmallGroup(144,196)} 的认证对偶下界已为 $18$，上界为 $20$，因而不可能影响全局最小值 $17$；
+ \item $73$ 个精确实例中，只有 \texttt{[144,184]}（$A_4^2$）、\texttt{[144,193]}、\texttt{[144,194]} 的最优值为 $17$，其余均至少为 $18$。
+\end{itemize}
+三份十七子群证书均经离线重新展开，覆盖均为 $144/144$，对偶界均为 $17$（仅有浮点表示误差）。故
+\begin{equation}\label{eq:n12-exact}
+ \boxed{\alpha(12)=17.}
+\end{equation}
+这取代了早期“仅构造上界 $17$”的记录，也排除了 $n+p$、$n+2p$ 作为一般公式。
+
+归档目录为
+\begin{center}
+\path{computation/order144/}
+\end{center}
+其中 \path{export-covers.g}、\path{solve-covers.py}、\path{covers-12.jsonl}、\path{solutions-12.jsonl}、\path{export-12.log} 保存原始计算，\path{audit.py}、\path{audit.log}、\path{SHA256SUMS.txt} 保存离线审计与哈希。两份核心数据的 SHA-256 为
+\begin{center}
+\small\path{covers-12.jsonl  5af630fdc06e680b7ef107ade80fc5c501160fd4d7a8aae30568b105d2b5d22f}\\
+\small\path{solutions-12.jsonl  695d9b5cb41520a86f7ac1b43af755426c64d8a8daf816ee254e721293980125}
+\end{center}
+从工作区根目录可复现哈希与离线审计：
+\begin{center}
+\texttt{sha256sum -c computation/order144/SHA256SUMS.txt}\\
+\texttt{python computation/order144/audit.py}
+\end{center}
+完整重跑 GAP/HiGHS 的本机命令见 \path{computation/order144/verification.md}；本次整理只引用已归档产物，没有重新枚举群或重跑求解。
+
+\subsection{\texorpdfstring{$n=15$}{n=15}：6 个 225 阶群无未决项}
+GAP SmallGroupLibrary 中 $225$ 阶恰有 $6$ 个同构类，本次逐一导出全部十五阶子群，无超时、无未决群。
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{1.1cm}Y>{\centering\arraybackslash}p{1.25cm}>{\centering\arraybackslash}p{1.35cm}Y}
+\toprule
+ID & 结构 & 指数 & 十五阶子群数 & 结论\\
+\midrule
+1 & $C_{225}$ & 225 & 1 & 指数排除；并集 $15/225$\\
+2 & $C_{75}\times C_3$ & 75 & 4 & 指数排除；并集 $45/225$\\
+3 & $(C_5^2)\rtimes C_9$ & 45 & 6 & 指数排除；并集 $75/225$\\
+4 & $C_{45}\times C_5$ & 45 & 6 & 指数排除；并集 $75/225$\\
+5 & $C_3\times(C_5^2\rtimes C_3)$ & 15 & 6 & 全部子群仅覆盖 $75/225$，不可覆盖\\
+6 & $C_{15}^2$ & 15 & 24 & 最小覆盖为 $24$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+唯一可覆盖群 \texttt{SmallGroup(225,6)} 的 MILP 返回 \texttt{status=0 (Optimal)}，最优值与对偶界均为 $24$。另有独立于求解器最优性判定的证书：$24$ 个子群各自都含至少一个“私有元素”（只属于该子群），所以全部必选；离线审计重新计算覆盖频数并确认并集为 $225/225$。因此
+\begin{equation}\label{eq:n15-exact}
+ \boxed{\alpha(15)=24=(3+1)(5+1),}
+\end{equation}
+完整验证了 $pq$ 公式中 $3\nmid(5-1)$ 的非作用分支，并排除候选值 $21$。
+
+归档目录为
+\begin{center}
+\path{computation/order225/}
+\end{center}
+主要文件包括 \path{export-covers.g}、\path{covers-15.jsonl}、\path{classification-225.tsv}、\path{export-15.log}、\path{solve-covers.py}、\path{solutions-15.jsonl}、\path{solve-15.log}、\path{audit.py}、\path{audit.log} 与 \path{SHA256SUMS.txt}。从该目录可执行
+\begin{center}
+\texttt{python solve-covers.py}\\
+\texttt{python audit.py}\\
+\texttt{sha256sum -c SHA256SUMS.txt}
+\end{center}
+完整 GAP 环境及重跑命令见 \path{computation/order225/results.md}。重跑可能改变耗时或等价最优解下标，但不应改变分类、最优值和私有元素证书。
+
+\section{当前结果总表与开放边界}
+\subsection{简单自然候选的反例}
+记 $q_{\max}(n)$ 为 $n$ 的最大素因子。以下已知精确值足以排除全部简单自然候选；这些反例不否定其他更复杂公式的存在。
+\begin{longtable}{L{0.28\textwidth}L{0.46\textwidth}L{0.16\textwidth}}
+\caption{自然候选的具体反例与准确结论}\label{tab:counterexamples}\\
+\toprule
+候选 & 具体检验 & 结论\\
+\midrule
+\endfirsthead
+\toprule
+候选 & 具体检验 & 结论\\
+\midrule
+\endhead
+$\alpha(n)=n+1$ & $n=6$ 时预测 $7$，实际 $\alpha(6)=10$ & 错；仅素数幂成立\\
+$\alpha(n)=n+p_{\min}(n)$（非素数幂） & $n=6$ 预测 $8$，实际 $10$；$n=15$ 预测 $18$，实际 $24$ & 错；只是下界\\
+$\alpha(n)=n+2p_{\min}(n)$ & $n=12$ 预测 $16$，已有精确值 $17$ & 错\\
+$\alpha(n)=n+q_{\max}(n)+1$ & $n=15$ 预测 $21$，实际 $24$；$n=35$ 预测 $43$，实际 $48$ & 错\\
+$\alpha(n)=P(n)$ & $n=6$ 给出 $12$，实际 $10$；$n=12$ 给出 $20$，实际 $17$ & 错；只是上界\\
+$\alpha(n)=\psi(n)$ & $n=4$ 给出 $6$，实际 $5$；$n=6$ 给出 $12$，实际 $10$ & 错；这是固定 $C_n^2$ 的公式\\
+$\alpha(ab)=\alpha(a)\alpha(b)$\newline （即使 $a,b$ 互素） & $\alpha(2)\alpha(3)=12\ne10=\alpha(6)$；$\alpha(3)\alpha(4)=20\ne17=\alpha(12)$ & 错；只有 $\le$\\
+\bottomrule
+\end{longtable}
+
+组合候选 $\alpha(n)=U(n)$ 目前\textbf{没有已知数值反例，但同样没有一般下界证明}，所以只能保留式 \eqref{eq:summary-general} 中的上界地位。另一个自然推广是对 $n=ab$（$b$ 为素数幂且 $a\mid b-1$）统一声称 $ab+b+1$ 个子群：$n=20=4\cdot5$ 已说明所需标量同态不存在，故连该构造上界都不能声称；但这只证明推广方案失效，\textbf{并不证明 $\alpha(20)\ne26$}。
+
+\subsection{已证结果与未确定区间}
+\begin{center}
+\small
+\begin{longtable}{p{0.16\textwidth}p{0.27\textwidth}p{0.45\textwidth}}
+\caption{存在型与固定群结果概览}\label{tab:results}\\
+\toprule
+范围或数值 & 当前结论 & 依据\\
+\midrule
+\endfirsthead
+\toprule
+范围或数值 & 当前结论 & 依据\\
+\midrule
+\endhead
+任意 $n$ & $L(n)\le\alpha(n)\le U(n)\le P(n)$ & 式 \eqref{eq:summary-general}；$U$ 仅为构造上界，计数另给 $\alpha(n)\ge n+1$\\
+$n=p^a$ & $\alpha(n)=n+1$ & 定理 \ref{thm:primepower}；见证群 $\F_{p^a}^2$\\
+非素数幂 $n$ & $n+p_{\min}\le\alpha(n)\le\prod_{q_i\parallel n}(q_i+1)$ & 命题 \ref{prop:jungnickel-lower} 与定理 \ref{thm:general-upper}\\
+$n=pq$，$p<q$ & 式 \eqref{eq:pq-final} 的分段精确公式 & 正规 Sylow 下界、半直积构造与直积分类\\
+$p$ 素数，$b$ 素数幂，$p\mid b-1$ & $\alpha(pb)\le pb+b+1$ & 定理 \ref{thm:semidirect-upper}；只是上界\\
+固定 $C_n^2$ & $\mu(n)=\prod_{p^a\parallel n}p^{a-1}(p+1)$ & 定理 \ref{thm:fixed}；不是存在型公式\\
+$n=6$ & $\alpha(6)=10$ & 独立手证；36 阶 14 群计算交叉核验\\
+$n=10$ & $\alpha(10)=16$ & $pq$ 公式；可覆盖类型分类穷举核验\\
+$n=12$ & $\alpha(12)=17$ & 144 阶 197 群完整计算认证\\
+$n=15$ & $\alpha(15)=24$ & 225 阶 6 群完整计算认证；亦为 $pq$ 公式\\
+$n=18$ & $20\le\alpha(18)\le28$ & 通用下界与半直积构造 $(p,b)=(2,9)$；精确值未确定\\
+$n=20$ & $22\le\alpha(20)\le30$ & 通用下界与直积上界；$4\cdot5$ 的半直积方案不适用\\
+$n=30$ & $32\le\alpha(30)\le60$ & 一般下界与 $\alpha(6)\alpha(5)$；精确值未确定\\
+一般 $a,b$ & $\alpha(ab)\le\alpha(a)\alpha(b)$ & 命题 \ref{prop:product}；不要求互素\\
+\bottomrule
+\end{longtable}
+\end{center}
+
+仍未完成的是任意 $n$ 的统一精确闭式，而不是某个单点的程序优化。主要缺口包括：混合素数幂与至少三个素因子的精确值、一般半直积作用下的最优覆盖分类，以及无正规 Sylow 子群时群分类与覆盖优化的同步处理。$pq$ 证明不能机械推广到非素数商因子；第 \ref{sec:mixed-cosets} 节的混合方向陪集划分进一步说明，素数乘素数幂时连原等号论证中的“同方向”步骤也不再自动成立。该障碍既未证明也未否定加强下界，故相应半直积公式仍只作为上界。现有结果同样没有证明“不存在任何算术闭式”。
+
+\section{最终研究结论与协作过程}
+\subsection{答题过程与最终判断}
+本次答题先固定量词，避免把固定 $C_n^2$ 的 $\psi(n)$ 公式误答为允许选群的 $\alpha(n)$；随后分别建立素数幂与 $pq$ 的完整证明、一般直积和半直积构造、通用及正规 Sylow 条件下界，并用已知精确值逐一检验自然候选。计算组对关键小阶情形进行全群分类、精确集合覆盖和离线证书审计；文献组复核原始来源并定向反查数列与前向引文。最后的一般理论收束没有把这些成果拼接成未证的“总公式”，而是保留为 $L(n)\le\alpha(n)\le U(n)\le P(n)$。
+
+因此，最终答案是：\textbf{所有正整数 $n$ 的存在型精确闭式本次未能给出，不能伪造；固定 $C_n^2$ 的任意 $n$ 公式、素数幂与 $pq$ 的存在型精确公式，以及 $\alpha(12)=17$ 的计算认证均已明确给出。}$n=18,20,30$ 只认证到 $[20,28]$、$[22,30]$、$[32,60]$，不是精确值。文献部分仅报告限定范围内“未找到”和“本项目未解决”，没有声称“已证明闭式不存在”。
+
+\subsection{子 Agent 的共享协调方式}
+所有协作结论通过 \path{research/coordination.md} 汇聚，流程如下。
+\begin{enumerate}[label=\textup{(\arabic*)},leftmargin=2.6em]
+ \item \textbf{先读共享账本。} 每个后续 Agent 开始工作前读取 \path{coordination.md} 及其指向的报告，统一 $\alpha(n)$（存在型）、$\mu(n)$（固定 $C_n^2$）与 $\beta(n)$（可覆盖群上的最坏值）的记号，避免量词混淆。
+ \item \textbf{成果写入独立报告，再追加摘要。} 新证明或计算先保存到各自文件，再在协调文件追加“新增结论”，注明文件位置、已证明范围和待复核问题；协调文件不是替代详细证明的草稿纸。
+ \item \textbf{发现错误时保留原报告。} 不直接覆盖他人论证，而是在协调文件记录具体行号和修正意见，由主 Agent 安排复核。例如早期 $n=6$ 的松散下界被精确值 $10$ 取代，$n=12$ 的早期“仅上界 $17$”随后被完整认证取代。
+ \item \textbf{按互补方向分工。} 文献 Agent 核对原始来源，理论 Agent 处理一般界与特殊类公式，划分 Agent 研究等号与结构，计算 Agent 验证尚未独立确认的实例，主 Agent 只做汇总与交叉核验。
+ \item \textbf{明确禁止重复枚举。} $n=6$、$n=10$ 完成后，后续计算转向 $n=12$、$n=15$。$n=12$ 的临时脚本和 JSONL 被归档至 \path{computation/order144/}，记录 SHA-256 并离线重展开证书，其他 Agent 因而无需重复 197 群计算。$n=15$ 只处理此前未完成的非作用分支，全部产物归档至 \path{computation/order225/}。
+ \item \textbf{保留计算状态。} “精确最优”“不可覆盖”“超时下界”和“仅构造上界”分别记录；唯一超时实例只有在认证下界已大于全局候选值时才可用于全局结论。这样避免把局部最优或启发式结果误写成存在型精确答案。
+\end{enumerate}
+本次定稿仅整理这些已共享成果，没有重新进行群枚举或优化求解；$n=18,20,30$ 的区间来自手证代入与既有构造组合，也没有新增群枚举。
+
+\appendix
+\section{可复现文件索引}
+本文引用的路径均相对于仓库根目录。
+\begin{longtable}{p{0.39\textwidth}p{0.51\textwidth}}
+\toprule
+相对路径 & 内容\\
+\midrule
+\path{research/coordination.md} & 子 Agent 协调记录、量词统一与逐轮新增结论\\
+\path{research/literature.md} & 检索范围、相关文献与一般公式边界\\
+\path{research/primary-sources.md} & 三篇原始文献的 A/B 级证据复核\\
+\path{research/sequence-lookup.md} & OEIS、关键词与 Jungnickel 前向引文定向反查及其边界\\
+\path{proof/candidate-proof.md} & 一般上下界、正规 Sylow 下界与 $pq$ 完整证明\\
+\path{proof/general-n.md} & $L,U,P$ 收束、自然候选反例、$n=18,20,30$ 区间及文献边界\\
+\path{proof/semidirect-upper.md} & 素数乘素数幂的半直积标量构造及 $n=18,20$ 上界\\
+\path{proof/prime-times-primepower.md} & 正规 Sylow 下界与混合方向陪集划分的等号障碍\\
+\path{proof/pq-review.md} & $pq$ 证明同行复核\\
+\path{proof/n6-lower-bound.md} & $n=6$ 的分类与重复计数手证\\
+\path{proof/partition-approach.md} & $n=12$ 完整穷举与整数规划报告\\
+\path{computation/results.md} & 小阶实验、$n=6$ 与 $n=10$ 交叉核验及早期构造\\
+\path{computation/order144/verification.md} & $n=12$ 归档、哈希、审计及完整重跑命令\\
+\path{computation/order225/results.md} & $n=15$ 完备分类、私有元素证书与复现命令\\
+\bottomrule
+\end{longtable}
+
+\begin{thebibliography}{99}
+\bibitem{Isaacs1973}
+I. M. Isaacs, \emph{Equally partitioned groups}, Pacific Journal of Mathematics 49(1) (1973), 109--116.
+\href{https://doi.org/10.2140/pjm.1973.49.109}{DOI}；
+\href{https://msp.org/pjm/1973/49-1/pjm-v49-n1-p11-s.pdf}{出版方公开 PDF}。
+
+\bibitem{Jungnickel1999}
+D. Jungnickel, \emph{On small congruence covers}, Bulletin of the Belgian Mathematical Society--Simon Stevin 6(3) (1999), 413--421.
+\href{https://doi.org/10.36045/bbms/1103065860}{DOI/Project Euclid}；
+\href{https://api.zbmath.org/v1/document/1374975}{zbMATH 评论 API}。
+
+\bibitem{JungnickelStorme2001}
+D. Jungnickel, L. Storme, \emph{Packing and covering groups with subgroups}, Journal of Algebra 239(1) (2001), 191--214.
+\href{https://doi.org/10.1006/jabr.2000.8640}{DOI}；
+\href{https://biblio.ugent.be/publication/168724}{Ghent 书目记录}；
+\href{https://api.zbmath.org/v1/document/1643653}{zbMATH 评论 API}。
+
+\bibitem{Velasquez2022}
+A. Velasquez-Berroteran, \emph{Equal Coverings of Finite Groups}, 学位论文及 arXiv 预印本 (2022).
+\href{https://arxiv.org/abs/2206.14843}{arXiv:2206.14843}；
+\href{https://arxiv.org/pdf/2206.14843}{PDF}。
+
+\bibitem{Foguel2025}
+T. Foguel, A. R. Moghaddamfar, J. Schmidt, A. Velasquez-Berroteran, \emph{Concerning equally covered groups}, International Electronic Journal of Algebra 37 (2025), 352--365.
+\href{https://doi.org/10.24330/ieja.1567377}{DOI}。
+
+\bibitem{OEISpsi}
+OEIS, \href{https://oeis.org/A001615}{A001615: Dedekind psi function}。用于核对 $C_n^2$ 中 $n$ 阶循环子群计数，不作为最小性证明来源。
+
+\bibitem{GAPSmallGrp}
+GAP SmallGrp Library, \href{https://docs.gap-system.org/pkg/smallgrp/doc/chap1.html}{官方文档}。
+
+\bibitem{GroupNames}
+GroupNames, \href{https://people.maths.bris.ac.uk/~matyd/GroupNames/index.html}{有限群结构与 SmallGroup 标签}。用于小阶独立计算的公开群数据对照。
+\end{thebibliography}
+
+\end{document}

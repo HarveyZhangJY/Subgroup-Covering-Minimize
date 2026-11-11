@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+
+# LaTeX intermediates
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+
+# Local caches and generated rerun files
+computation/groupnames_cache/
+computation/group_data/
+computation/solve_results/
+computation/**/*rerun*.jsonl
