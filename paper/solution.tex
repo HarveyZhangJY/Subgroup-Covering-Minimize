@@ -57,14 +57,18 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-\noindent 设 $n\ge2$，考虑阶为 $n^2$ 的有限群由阶为 $n$ 的子群覆盖所需的最少子群数。\textbf{对用户所要求的所有正整数 $n$ 的存在型精确闭式，本次未能给出，也不以未证猜想冒充答案。}本文严格区分“允许选择群”“固定群”和“任意群”三种量词：若固定 $C_n^2$，则有适用于任意 $n$ 的精确公式 $\mu(n)=\psi(n)$；若允许选择群，则 $n$ 为素数幂或两个不同素数之积 $pq$ 时有精确公式，另有完整计算认证的 $\alpha(12)=17$、$\alpha(18)=27$、$\alpha(20)=30$、$\alpha(28)=40$。一般 $n$ 目前只能收束为 $L(n)\le\alpha(n)\le U(n)\le P(n)$，其中 $U(n)$ 仅是已知构造的有限组合上界，并非精确递归式；本文同时给出 $n=30$ 的已证区间并列表排除简单自然候选。文中保留 $pq$ 与半直积的完整证明、$n=6$ 的手证要点，以及 $n=12,15,18,20,28$ 的计算证书、哈希与复现位置。文献结论严格区分“本次检索未找到”“本项目尚未解决”与“已证明闭式不存在”：只有前两项在各自限定范围内成立，最后一项并未证明。
+\noindent 设 $n\ge2$，考虑阶为 $n^2$ 的有限群由阶为 $n$ 的子群覆盖所需的最少子群数。\textbf{对用户所要求的所有正整数 $n$ 的存在型精确闭式，本次未能给出，也不以未证猜想冒充答案。}本文严格区分“允许选择群”“固定群”和“任意群”三种量词：若固定 $C_n^2$，则有适用于任意 $n$ 的精确公式 $\mu(n)=\psi(n)$；若允许选择群，则 $n$ 为素数幂、两个不同素数之积 $pq$，或 $n=2q^2$（$q$ 为奇素数幂）时有精确公式，另有完整计算认证的 $\alpha(12)=17$、$\alpha(18)=27$、$\alpha(20)=30$、$\alpha(28)=40$。特别地，新族
+\[
+\alpha(2q^2)=3q^2\quad(q\text{ 为奇素数幂})
+\]
+包含 $\alpha(18)=27$，并给出 $\alpha(50)=75$、$\alpha(98)=147$、$\alpha(162)=243$ 等。一般 $n$ 目前只能收束为 $L(n)\le\alpha(n)\le U(n)\le P(n)$，其中 $U(n)$ 仅是已知构造的有限组合上界，并非精确递归式；本文同时给出 $n=30$ 的已证区间并列表排除简单自然候选。文中保留 $pq$、半直积与 $n=2q^2$ 的完整证明、$n=6$ 的手证要点，以及 $n=12,15,18,20,28$ 的计算证书、哈希与复现位置。文献结论严格区分“本次检索未找到”“本项目尚未解决”与“已证明闭式不存在”：只有前两项在各自限定范围内成立，最后一项并未证明。
 \end{abstract}
 
 \tableofcontents
 \clearpage
 
 \section{问题、量词与记号}
-\textbf{结论先行：}本次研究未能给出用户要求的所有正整数 $n$ 的存在型精确闭式，不能伪造这一答案。能够完整回答的是两个不同层次的问题：固定 $C_n^2$ 时，任意 $n$ 都有闭式 $\mu(n)=\psi(n)$；允许选择群时，$n$ 为素数幂或 $pq$（$p,q$ 为不同素数）时有精确公式，孤立值 $\alpha(12)=17$ 也有完整计算认证。除此之外，本文只陈述已证明的界、构造与条件结果，不把数值吻合提升为一般公式。
+\textbf{结论先行：}本次研究未能给出用户要求的所有正整数 $n$ 的存在型精确闭式，不能伪造这一答案。能够完整回答的是两个不同层次的问题：固定 $C_n^2$ 时，任意 $n$ 都有闭式 $\mu(n)=\psi(n)$；允许选择群时，$n$ 为素数幂、$pq$（$p,q$ 为不同素数），或 $n=2q^2$（$q$ 为奇素数幂）时有精确公式，孤立值 $\alpha(12)=17$ 与 $\alpha(18)=27$ 也有完整计算认证。除此之外，本文只陈述已证明的界、构造与条件结果，不把数值吻合提升为一般公式。
 
 对有限群 $G$，定义
 \begin{equation}
@@ -117,10 +121,12 @@
    pq+q+1,&p\mid q-1,\\[2pt]
    (p+1)(q+1),&p\nmid q-1,
  \end{cases}
- &&p<q\ \text{均为素数}.
- \label{eq:summary-pq}
+ &&p<q\ \text{均为素数};
+ \label{eq:summary-pq}\\
+ \alpha(2q^2)&=3q^2,&&q\ \text{为奇素数幂}.
+ \label{eq:summary-2q2}
 \end{align}
-此外，$\alpha(6)=10$ 有独立手证；$\alpha(12)=17$、$\alpha(15)=24$、$\alpha(18)=27$、$\alpha(20)=30$、$\alpha(28)=40$ 均有覆盖全部相应阶群的可审计计算证书。其中 $15=3\cdot5$ 属于式 \eqref{eq:summary-pq} 的 $p\nmid q-1$ 分支；$18=2\cdot3^2$ 达到正规 $q$-Sylow 下界 $18+9=27$；$20$ 与 $28$ 分别由 $C_5^2\times C_2^4$、$C_7^2\times C_2^4$ 的 spread 直积达到 $P(20)=30$、$P(28)=40$。此外，若 $p,q$ 为不同素数、$b=q^\alpha$、$p>b^2$ 且 $q\nmid p^2-1$，则
+此外，$\alpha(6)=10$ 有独立手证；$\alpha(12)=17$、$\alpha(15)=24$、$\alpha(18)=27$、$\alpha(20)=30$、$\alpha(28)=40$ 均有覆盖全部相应阶群的可审计计算证书。其中 $15=3\cdot5$ 属于式 \eqref{eq:summary-pq} 的 $p\nmid q-1$ 分支；$18=2\cdot3^2$ 达到正规 $q$-Sylow 下界 $18+9=27$，同时也是新族 \eqref{eq:summary-2q2} 的特例；$20$ 与 $28$ 分别由 $C_5^2\times C_2^4$、$C_7^2\times C_2^4$ 的 spread 直积达到 $P(20)=30$、$P(28)=40$。此外，若 $p,q$ 为不同素数、$b=q^\alpha$、$p>b^2$ 且 $q\nmid p^2-1$，则
 \begin{equation}\label{eq:summary-large-p}
  \alpha(pq^\alpha)=(p+1)(b+1)=P(pq^\alpha),
 \end{equation}
@@ -144,7 +150,7 @@
  \alpha(pb)\le pb+b+1.
 \end{equation}
 
-为完整记录当前所有构造的组合效果，对每个整数 $d\ge2$，令 $u_0(d)$ 为下列所有适用数值的最小值：$P(d)$；素数幂情形的 $d+1$；$d=pq$ 时式 \eqref{eq:summary-pq} 的精确值；$d=pb$ 且满足式 \eqref{eq:summary-semidirect} 的假设时的 $pb+b+1$；以及 $d=12$ 时的 $17$。再定义
+为完整记录当前所有构造的组合效果，对每个整数 $d\ge2$，令 $u_0(d)$ 为下列所有适用数值的最小值：$P(d)$；素数幂情形的 $d+1$；$d=pq$ 时式 \eqref{eq:summary-pq} 的精确值；$d=pb$ 且满足式 \eqref{eq:summary-semidirect} 的假设时的 $pb+b+1$；$d=2q^2$（$q$ 为奇素数幂）时式 \eqref{eq:summary-2q2} 的精确值；以及 $d=12$ 时的 $17$。再定义
 \begin{equation}\label{eq:U-definition}
  U(n):=\min\left\{\prod_{i=1}^{k}u_0(d_i):
  n=d_1\cdots d_k,\ k\ge1,\ d_i\ge2\right\}.
@@ -388,7 +394,7 @@ Jungnickel 的小同余覆盖定理（证据 A：Theorem 1.4，p.415；逆否形
 \begin{equation}\label{eq:n18-exact}
  \boxed{\alpha(18)=27.}
 \end{equation}
-达到者只有 \texttt{SmallGroup(324,121)} 与 \texttt{SmallGroup(324,170)}$\cong C_3^4{:}C_2^2$；两者 Sylow $3$-子群正规、Sylow $2$-子群非正规，故 $27=18+9$ 是正规 $q$-Sylow 下界的等号。因此半直积上界 $28$ 在 $n=18$ 不是最优。证书、审计与逐步交代见 \path{computation/order324/}。
+达到者只有 \texttt{SmallGroup(324,121)} 与 \texttt{SmallGroup(324,170)}$\cong C_3^4{:}C_2^2$；两者 Sylow $3$-子群正规、Sylow $2$-子群非正规，故 $27=18+9$ 是正规 $q$-Sylow 下界的等号。因此半直积上界 $28$ 在 $n=18$ 不是最优。证书、审计与逐步交代见 \path{computation/order324/}。第 \ref{sec:2q2} 节的新定理 $\alpha(2q^2)=3q^2$ 还给出 $n=18$ 的独立结构性证明（不依赖 $176$ 群枚举），并将其推广到所有奇素数幂 $q$。
 
 但不能把 $p$ 换成复合素数幂而机械沿用此证明。若 $a=p^r$ 且要求 $\ker\chi$ 是 $\F_a^2$ 的一条直线，则 $A/\ker\chi\cong C_p^r$ 必须嵌入循环群 $\F_b^\times$，这迫使 $r=1$。特别地，$n=20$ 的形式分解 $a=4,b=5$ 虽给出形式数 $26$，却有 $\F_4^2/\text{直线}\cong C_2^2$，不能嵌入 $\F_5^\times\cong C_4$，所以该构造不能推出 $\alpha(20)\le26$。完整枚举 $400$ 阶全部 $221$ 个群证明
 \begin{equation}\label{eq:n20-exact}
@@ -469,7 +475,101 @@ m\ge(p+1)(b+1).
 \end{equation}
 确实划分 $Q$：前两个划分 $x_4=0$ 的八点，后两个划分 $x_4=1$ 的八点；但方向为 $U,U,W,W$，且 $U\ne W$。第一个陪集还经过单位元，故附加这一条件也不能排除混合方向。
 
-例 \eqref{eq:mixed-coset-example} 只否定原 $pq$ 等号证明中的关键引理，\textbf{不是}整个群由 $pb+b$ 个子群覆盖的反例。因此目前既不能宣称一般加强下界已经证明，也不能宣称它被否定；定理 \ref{thm:semidirect-upper} 的右端仍只能写作上界，不能写成 $\alpha(pb)=pb+b+1$。
+例 \eqref{eq:mixed-coset-example} 只否定原 $pq$ 等号证明中的关键引理，本身还不是整个群的覆盖。下一小节将说明：对 $p=2$、$b=q^2$（$q$ 为奇素数幂），这种混合方向确实可以组织成完整的 $pb+b$ 覆盖，因此严格下界 $pb+b+1$ 一般不成立。
+
+\subsection{忠实 \texorpdfstring{$C_2^2$}{C2^2} 作用与 \texorpdfstring{$n=2q^2$}{n=2q^2} 的精确值}\label{sec:2q2}
+
+\begin{theorem}\label{thm:2q2}
+设 $q$ 为奇素数幂，$n=2q^2$。则
+\begin{equation}\label{eq:2q2-exact}
+ \boxed{\alpha(2q^2)=3q^2.}
+\end{equation}
+特别地，
+\begin{equation}\label{eq:n18-2q2-exact}
+ \boxed{\alpha(18)=27.}
+\end{equation}
+\end{theorem}
+
+\begin{proof}[上界]
+令
+\[
+ Q=(\F_q^4,+),\qquad A=\langle a,b\rangle\cong C_2^2,
+\]
+其中 $a,b$ 在基 $e_0,e_1,e_2,e_3$ 上作用为
+\[
+ a=\operatorname{diag}(-1,-1,1,-1),\qquad
+ b=\operatorname{diag}(1,1,-1,-1).
+\]
+令 $G=Q\rtimes A$。则 $|G|=4q^4=(2q^2)^2=n^2$，且 $\exp(G)\mid \operatorname{lcm}(q,2)=2q\mid n$。记
+\[
+ L_2=\langle e_2\rangle,\qquad L_3=\langle e_3\rangle,\qquad
+ P=\langle e_0,e_1\rangle.
+\]
+
+取 $\F_q$ 上一个不可约二次多项式，其伴侣矩阵记为 $C$。对每个 $(u,v)\in\F_q^2$，令
+\[
+ (f(u,v),g(u,v))=C\binom{u}{v},
+\]
+并在 $V=\F_q^3$ 中定义仿射线
+\[
+ \ell_{u,v}=\{(ut+f(u,v),\ vt+g(u,v),\ t):t\in\F_q\}.
+\]
+因为 $tI+C$ 对每个 $t\in\F_q$ 都可逆，映射 $(u,v)\mapsto(ut+f,vt+g)$ 是 $\F_q^2$ 的双射；故这 $q^2$ 条线两两不交并覆盖 $V$，其方向 $(u,v,1)$ 恰为平面 $z=0$ 之外的全部方向。
+
+构造三类子群。第一类：对每个 $(u,v)\in\F_q^2$，令
+\[
+ M^{(a)}_{u,v}=L_2+\langle e_3+u e_0+v e_1\rangle,
+\]
+\[
+ H^{(a)}_{u,v}
+=M^{(a)}_{u,v}\times\{1\}
+\;\cup\;
+\bigl(f(u,v)e_0+g(u,v)e_1+M^{(a)}_{u,v}\bigr)\times\{a\}.
+\]
+由于 $M^{(a)}_{u,v}$ 是 $a$-不变的且 $a(fe_0+ge_1)=-(fe_0+ge_1)$，这是阶为 $2q^2=n$ 的子群。它在 $a$-纤维中的投影（商掉 $L_2$ 后）正是 $\ell_{u,v}$，所以这 $q^2$ 个子群划分 $a$-纤维。
+
+第二类：对每个 $(u,v)\in\F_q^2$，对称地令
+\[
+ M^{(ab)}_{u,v}=L_3+\langle e_2+u e_0+v e_1\rangle,
+\]
+\[
+ H^{(ab)}_{u,v}
+=M^{(ab)}_{u,v}\times\{1\}
+\;\cup\;
+\bigl(f(u,v)e_0+g(u,v)e_1+M^{(ab)}_{u,v}\bigr)\times\{ab\}.
+\]
+同理，这 $q^2$ 个阶为 $n$ 的子群划分 $ab$-纤维。
+
+第三类：对每个 $(r,s)\in\F_q^2$，令
+\[
+ H^{(b)}_{r,s}
+=P\times\{1\}
+\;\cup\;
+\bigl(r e_2+s e_3+P\bigr)\times\{b\}.
+\]
+由于 $b$ 在 $P$ 上作用平凡、在 $e_2,e_3$ 上作用为 $-1$，这是阶为 $n$ 的子群；集合 $r e_2+s e_3+P$ 遍历 $P$ 在 $Q$ 中的全部 $q^2$ 个陪集，所以这 $q^2$ 个子群划分 $b$-纤维。
+
+总数为 $3q^2=n+q^2$。最后，单位纤维 $Q$ 被覆盖：若 $x\in L_2$ 或 $x$ 的 $e_3$-坐标非零，则 $x$ 属于某个 $M^{(a)}_{u,v}$；否则 $e_3=0$，若 $e_2\ne0$ 则 $x$ 属于某个 $M^{(ab)}_{u,v}$，若 $e_2=e_3=0$ 则 $x\in P$。因此这 $3q^2$ 个子群覆盖 $G$，且两两不同。故 $\alpha(2q^2)\le3q^2$。
+\end{proof}
+
+\begin{proof}[下界]
+写 $q=\ell^s$，其中 $\ell$ 为奇素数，则 $n=2\ell^{2s}$、$|G|=4\ell^{4s}$。设 $P$ 为 Sylow $\ell$-子群，$|P|=\ell^{4s}=q^4$。
+
+若 $\ell>3$，Sylow 定理给出 $n_\ell\mid4$ 且 $n_\ell\equiv1\pmod\ell$。在 $1,2,4$ 中只有 $1$ 满足同余，故 $n_\ell=1$，即 $P\triangleleft G$。由引理 \ref{lem:normal-sylow}（取 $a=2$、$q=\ell$、指数 $b=2s$），任何覆盖满足
+\[
+ m\ge n+\ell^{2s}=2q^2+q^2=3q^2.
+\]
+
+若 $\ell=3$，假设 Sylow 3-子群不正规，即 $n_3=4$。共轭作用给出同态 $\varphi:G\to S_4$。其像 $H=\varphi(G)$ 传递，故 $4\mid|H|$；又 $H\le S_4$，且 $|H|=|G|/|K|$ 必须使核 $K$ 为 3-群，故 $|H|\in\{4,12\}$。若 $|H|=4$，则 $|K|=3^{4s}=|P|$，正规 3-子群 $K$ 含于每个 Sylow 3-子群，故 $K=P$，与 $P$ 不正规矛盾。因此 $|H|=12$，$|K|=3^{4s-1}$，且 $H\cong A_4$（$S_4$ 中唯一的 12 阶子群）。
+
+取任意 \(n=2\cdot3^{2s}\) 阶子群 \(L\le G\)。它在 \(A_4\) 中的像的阶整除 \(\gcd(n,12)=6\)，而 \(A_4\) 没有 6 阶子群，故像的阶为 \(1,2\) 或 \(3\)。若为 \(1\)，则 \(L\le K\)，但 \(|L|=2\cdot3^{2s}\) 不整除 \(|K|=3^{4s-1}\)（\(|L|\) 含因子 \(2\)），矛盾；若为 \(3\)，则 \(|L\cap K|=2\cdot3^{2s-1}\)，含因子 \(2\)，而 \(K\) 是 3-群，矛盾。因此像的阶只能是 \(2\)。于是每个 \(n\) 阶子群都落在 \(A_4\) 某个二阶子群的原像中；\(A_4\) 的 8 个三阶元素不属于任何二阶子群，它们在 \(G\) 中的原像不可能被任何 \(n\) 阶子群覆盖。故 \(G\) 不可覆盖。
+
+所以可覆盖群必有正规 Sylow 3-子群，再由引理 \ref{lem:normal-sylow} 得 $m\ge n+3^{2s}=3q^2$。综上 $\alpha(2q^2)\ge3q^2$，结合上界即得式 \eqref{eq:2q2-exact}。取 $q=3$ 得 $\alpha(18)=27$。
+\end{proof}
+
+\begin{remark}
+定理 \ref{thm:2q2} 在 $n=pb$ 的记号下对应 $p=2$、$b=q^2$，并说明严格下界 $pb+b+1$ 一般不成立：本族的精确值是 $pb+b=3q^2$，比半直积上界 $pb+b+1$ 少 $1$。这也回答了第 \ref{sec:mixed-cosets} 节留下的问题：混合方向不仅可以出现在局部陪集划分中，而且确实可以组织成完整的 $pb+b$ 覆盖。计算证书与离线验证见 \path{computation/2q2-family/}；其中 $q=3$ 的见证群有 370 个 18 阶子群，精确 MILP 的最优值与对偶界均为 $27$。
+\end{remark}
 
 \section{\texorpdfstring{$n=pq$}{n=pq} 的完整分段公式}
 \subsection{Sylow 结构与下界}\label{sec:pq-lower}
@@ -665,6 +765,8 @@ $28$ & $784$ & $172$ & $97$ & $75$ & $11$ & $40$：\texttt{[784,172]}$=C_7^2\tim
 所有 $176/221/172$ 个群均逐一交代；不可覆盖群由“全部子群并集仍不足全群”判定。$n=18$ 的全部可覆盖群均精确求解且无超时；$n=20$ 有 $3$ 个超时实例，对偶下界分别不小于 $30$；$n=28$ 有 $10$ 个超时实例，对偶下界均不小于 $40$，其中 \texttt{SmallGroup(784,171)} 的线类下界恰为 $40$。因此三个全局最小值均为严格证明，不依赖未证猜想。证书、审计脚本与哈希分别见
 \path{computation/order324/}、\path{computation/order400/}、\path{computation/order784/}。
 
+此外，第 \ref{sec:2q2} 节的新族 $\alpha(2q^2)=3q^2$ 给出 $n=18$ 的独立构造性证明，并同时覆盖 $n=50,98,162,\ldots$。其显式覆盖与 MILP 验证见 \path{computation/2q2-family/}；它与这里的 $176$ 群完整枚举是两条独立的证据链。
+
 \begin{remark}
 不能把“Sylow $p$-子群正规”直接升级为 $P(n)=(p+1)(b+1)$ 下界。反例为 $n=12$ 的
 $\texttt{SmallGroup(144,192)}=C_2^2\times S_3\times S_3$：其 Sylow $3$-子群正规，但最优覆盖为 $19$，小于 $P(12)=20$。原因是商群在 $P$ 上的共轭作用会移动直线，按固定直线计数失效。$n=18,20,28$ 的计算正是为了绕过这一缺口：$n=18$ 达到正规 $q$-Sylow 下界 $27$，$n=20,28$ 则由完整枚举与线类有效不等式确认 $30,40$。
@@ -689,11 +791,12 @@ $\alpha(n)=n+2p_{\min}(n)$ & $n=12$ 预测 $16$，已有精确值 $17$ & 错\\
 $\alpha(n)=n+q_{\max}(n)+1$ & $n=15$ 预测 $21$，实际 $24$；$n=35$ 预测 $43$，实际 $48$ & 错\\
 $\alpha(n)=P(n)$ & $n=6$ 给出 $12$，实际 $10$；$n=12$ 给出 $20$，实际 $17$ & 错；只是上界\\
 $\alpha(n)=\psi(n)$ & $n=4$ 给出 $6$，实际 $5$；$n=6$ 给出 $12$，实际 $10$ & 错；这是固定 $C_n^2$ 的公式\\
+$\alpha(pb)=pb+b+1$\newline （$p$ 素数，$b$ 素数幂） & $p=2,b=9$ 预测 $28$，实际 $\alpha(18)=27$ & 错；$p=2,b=q^2$ 族精确值为 $pb+b$\\
 $\alpha(ab)=\alpha(a)\alpha(b)$\newline （即使 $a,b$ 互素） & $\alpha(2)\alpha(3)=12\ne10=\alpha(6)$；$\alpha(3)\alpha(4)=20\ne17=\alpha(12)$ & 错；只有 $\le$\\
 \bottomrule
 \end{longtable}
 
-组合候选 $\alpha(n)=U(n)$ 目前\textbf{没有已知数值反例，但同样没有一般下界证明}，所以只能保留式 \eqref{eq:summary-general} 中的上界地位。另一个自然推广是对 $n=ab$（$b$ 为素数幂且 $a\mid b-1$）统一声称 $ab+b+1$ 个子群：$n=20=4\cdot5$ 已说明所需标量同态不存在，故连该构造上界都不能声称。完整枚举进一步证明 $\alpha(20)=30$，所以 $26$ 确实不可能；但这只说明该推广方案失效，不构成一般公式的反例。
+组合候选 $\alpha(n)=U(n)$ 目前\textbf{没有已知数值反例，但同样没有一般下界证明}，所以只能保留式 \eqref{eq:summary-general} 中的上界地位。另一个自然推广是对 $n=ab$（$b$ 为素数幂且 $a\mid b-1$）统一声称 $ab+b+1$ 个子群：$n=20=4\cdot5$ 已说明所需标量同态不存在，故连该构造上界都不能声称。完整枚举进一步证明 $\alpha(20)=30$，所以 $26$ 确实不可能；但这只说明该推广方案失效，不构成一般公式的反例。第 \ref{sec:2q2} 节的新定理则给出 $p=2,\ b=q^2$ 族的完整 $pb+b$ 覆盖，说明 $pb+b+1$ 不是一般的精确公式。
 
 \subsection{已证结果与未确定区间}
 \begin{center}
@@ -714,12 +817,13 @@ $n=p^a$ & $\alpha(n)=n+1$ & 定理 \ref{thm:primepower}；见证群 $\F_{p^a}^2$
 $n=pq$，$p<q$ & 式 \eqref{eq:pq-final} 的分段精确公式 & 正规 Sylow 下界、半直积构造与直积分类\\
 $p$ 素数，$b$ 素数幂，$p\mid b-1$ & $\alpha(pb)\le pb+b+1$ & 定理 \ref{thm:semidirect-upper}；只是上界\\
 $p>b^2$ 且 $q\nmid p^2-1$ & $\alpha(pq^\alpha)=(p+1)(b+1)$ & 命题 \ref{prop:large-p}；精确公式\\
+$n=2q^2$，$q$ 为奇素数幂 & $\alpha(n)=3q^2$ & 定理 \ref{thm:2q2}；新精确族，含 $n=18$\\
 固定 $C_n^2$ & $\mu(n)=\prod_{p^a\parallel n}p^{a-1}(p+1)$ & 定理 \ref{thm:fixed}；不是存在型公式\\
 $n=6$ & $\alpha(6)=10$ & 独立手证；36 阶 14 群计算交叉核验\\
 $n=10$ & $\alpha(10)=16$ & $pq$ 公式；可覆盖类型分类穷举核验\\
 $n=12$ & $\alpha(12)=17$ & 144 阶 197 群完整计算认证\\
 $n=15$ & $\alpha(15)=24$ & 225 阶 6 群完整计算认证；亦为 $pq$ 公式\\
-$n=18$ & $\alpha(18)=27$ & 324 阶 176 群完整计算；达到者 \texttt{[324,121]}、\texttt{[324,170]}\\
+$n=18$ & $\alpha(18)=27$ & 324 阶 176 群完整计算；定理 \ref{thm:2q2} 另有独立结构证明\\
 $n=20$ & $\alpha(20)=30$ & 400 阶 221 群完整计算；唯一达到者 $C_5^2\times C_2^4$\\
 $n=28$ & $\alpha(28)=40$ & 784 阶 172 群完整计算；唯一达到者 $C_7^2\times C_2^4$\\
 $n=30$ & $32\le\alpha(30)\le60$ & 一般下界与 $\alpha(6)\alpha(5)$；精确值未确定\\
@@ -728,13 +832,13 @@ $n=30$ & $32\le\alpha(30)\le60$ & 一般下界与 $\alpha(6)\alpha(5)$；精确�
 \end{longtable}
 \end{center}
 
-仍未完成的是任意 $n$ 的统一精确闭式，而不是某个单点的程序优化。主要缺口包括：混合素数幂与至少三个素因子的精确值、一般半直积作用下的最优覆盖分类，以及无正规 Sylow 子群时群分类与覆盖优化的同步处理。$pq$ 证明不能机械推广到非素数商因子；第 \ref{sec:mixed-cosets} 节的混合方向陪集划分进一步说明，素数乘素数幂时连原等号论证中的“同方向”步骤也不再自动成立。该障碍既未证明也未否定加强下界，故相应半直积公式仍只作为上界。现有结果同样没有证明“不存在任何算术闭式”。
+仍未完成的是任意 $n$ 的统一精确闭式，而不是某个单点的程序优化。主要缺口包括：更一般的混合素数幂（超出新的 $n=2q^2$ 族）、至少三个不同素因子的精确值、一般半直积作用下的最优覆盖分类，以及无正规 Sylow 子群时群分类与覆盖优化的同步处理。$pq$ 证明不能机械推广到非素数商因子；第 \ref{sec:mixed-cosets} 节的混合方向陪集划分说明，素数乘素数幂时原等号论证中的“同方向”步骤不再自动成立。第 \ref{sec:2q2} 节进一步把这种混合方向实现为 $p=2,b=q^2$ 的完整 $pb+b$ 覆盖，因此严格下界 $pb+b+1$ 一般不成立；对其他 $p,b$ 组合，该加强下界仍未解决，相应半直积公式仍只能作为上界。现有结果同样没有证明“不存在任何算术闭式”。
 
 \section{最终研究结论与协作过程}
 \subsection{答题过程与最终判断}
 本次答题先固定量词，避免把固定 $C_n^2$ 的 $\psi(n)$ 公式误答为允许选群的 $\alpha(n)$；随后分别建立素数幂与 $pq$ 的完整证明、一般直积和半直积构造、通用及正规 Sylow 条件下界，并用已知精确值逐一检验自然候选。计算组对关键小阶情形进行全群分类、精确集合覆盖和离线证书审计；文献组复核原始来源并定向反查数列与前向引文。最后的一般理论收束没有把这些成果拼接成未证的“总公式”，而是保留为 $L(n)\le\alpha(n)\le U(n)\le P(n)$。
 
-因此，最终答案是：\textbf{所有正整数 $n$ 的存在型精确闭式本次未能给出，不能伪造；固定 $C_n^2$ 的任意 $n$ 公式、素数幂与 $pq$ 的存在型精确公式，以及 $\alpha(12)=17$、$\alpha(18)=27$、$\alpha(20)=30$、$\alpha(28)=40$ 的计算认证均已明确给出。}$n=30$ 只认证到 $[32,60]$，不是精确值。文献部分仅报告限定范围内“未找到”和“本项目未解决”，没有声称“已证明闭式不存在”。
+因此，最终答案是：\textbf{所有正整数 $n$ 的存在型精确闭式本次未能给出，不能伪造；固定 $C_n^2$ 的任意 $n$ 公式、素数幂、$pq$ 与 $n=2q^2$（$q$ 为奇素数幂）的存在型精确公式，以及 $\alpha(12)=17$、$\alpha(18)=27$、$\alpha(20)=30$、$\alpha(28)=40$ 的计算认证均已明确给出。}特别地，新定理给出无限族 $\alpha(2q^2)=3q^2$，包括 $\alpha(18)=27$、$\alpha(50)=75$、$\alpha(98)=147$、$\alpha(162)=243$ 等；其中 $n=18$ 同时有 $176$ 群完整枚举证书。$n=30$ 只认证到 $[32,60]$，不是精确值。文献部分仅报告限定范围内“未找到”和“本项目未解决”，没有声称“已证明闭式不存在”。
 
 \subsection{子 Agent 的共享协调方式}
 所有协作结论通过 \path{research/coordination.md} 汇聚，流程如下。
@@ -746,7 +850,7 @@ $n=30$ & $32\le\alpha(30)\le60$ & 一般下界与 $\alpha(6)\alpha(5)$；精确�
  \item \textbf{明确禁止重复枚举。} $n=6$、$n=10$ 完成后，后续计算转向 $n=12$、$n=15$。$n=12$ 的临时脚本和 JSONL 被归档至 \path{computation/order144/}，记录 SHA-256 并离线重展开证书，其他 Agent 因而无需重复 197 群计算。$n=15$ 只处理此前未完成的非作用分支，全部产物归档至 \path{computation/order225/}。
  \item \textbf{保留计算状态。} “精确最优”“不可覆盖”“超时下界”和“仅构造上界”分别记录；唯一超时实例只有在认证下界已大于全局候选值时才可用于全局结论。这样避免把局部最优或启发式结果误写成存在型精确答案。
 \end{enumerate}
-本次定稿同时纳入 $324$、$400$、$784$ 阶的全群枚举与离线证书：$n=18,20,28$ 已精确，$n=30$ 仍未定；另在 USTC “一〇七”平台配置了 GAP 4.15.1 环境用于 $n=44$ 的独立复算。
+本次定稿同时纳入 $324$、$400$、$784$ 阶的全群枚举与离线证书：$n=18,20,28$ 已精确，$n=30$ 仍未定；另在 USTC “一〇七”平台配置了 GAP 4.15.1 环境用于 $n=44$ 的独立复算。后续合并又加入无限族 $\alpha(2q^2)=3q^2$（$q$ 为奇素数幂），其证明、显式覆盖与 MILP 验证见 \path{proof/2q2-exact.md} 与 \path{computation/2q2-family/}；其中 $n=18$ 的值与 $176$ 群完整枚举互相独立、结论一致。
 
 \appendix
 \section{可复现文件索引}
@@ -765,10 +869,11 @@ $n=30$ & $32\le\alpha(30)\le60$ & 一般下界与 $\alpha(6)\alpha(5)$；精确�
 \path{proof/candidate-proof.md} & 一般上下界、正规 Sylow 下界与 $pq$ 完整证明\\
 \path{proof/general-n.md} & 早期 $L,U,P$ 收束与自然候选反例；新结果见 \path{proof/pqalpha-general.md}\\
 \path{proof/pqalpha-general.md} & $n=pq^\alpha$ 的一般结构、正规 Sylow 界、$n=18,20,28$ 精确值与 $n=44$ 记录\\
+\path{proof/2q2-exact.md} & 无限族 $\alpha(2q^2)=3q^2$（$q$ 奇素数幂）与 $\alpha(18)=27$ 的独立结构证明\\
 \path{proof/pq2-q2.md} & $n=4p$：定理 A/B、Burnside 归约与 $p=5,7,11$ 的验证路径\\
 \path{research/pqalpha-literature.md} & $n=pq^\alpha$ 定向文献检索与证据等级\\
 \path{proof/semidirect-upper.md} & 素数乘素数幂的半直积标量构造及 $n=18,20$ 上界\\
-\path{proof/prime-times-primepower.md} & 正规 Sylow 下界与混合方向陪集划分的等号障碍\\
+\path{proof/prime-times-primepower.md} & 正规 Sylow 下界、混合方向陪集障碍及 $p=2,b=q^2$ 反例族\\
 \path{proof/pq-review.md} & $pq$ 证明同行复核\\
 \path{proof/n6-lower-bound.md} & $n=6$ 的分类与重复计数手证\\
 \path{proof/partition-approach.md} & $n=12$ 完整穷举与整数规划报告\\
@@ -776,6 +881,7 @@ $n=30$ & $32\le\alpha(30)\le60$ & 一般下界与 $\alpha(6)\alpha(5)$；精确�
 \path{computation/order144/verification.md} & $n=12$ 归档、哈希、审计及完整重跑命令\\
 \path{computation/order225/results.md} & $n=15$ 完备分类、私有元素证书与复现命令\\
 \path{computation/order324/verification.md} & $n=18$ 全 $176$ 群、$\alpha(18)=27$ 证书与审计\\
+\path{computation/2q2-family/results.md} & $n=2q^2$ 显式覆盖、$n=18$ MILP 与非正规 Sylow 3 检查\\
 \path{computation/order400/verification.md} & $n=20$ 全 $221$ 群、$\alpha(20)=30$ 证书与审计\\
 \path{computation/order784/verification.md} & $n=28$ 全 $172$ 群、$\alpha(28)=40$ 证书与审计\\
 \path{research/ustc-platform.md} & USTC “一〇七”平台环境、QOS 限制与 $n=44$ 待办记录\\
