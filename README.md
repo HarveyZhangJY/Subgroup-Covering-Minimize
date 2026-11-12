@@ -56,7 +56,7 @@ n+1,& n\text{ is a prime power},\\
 n+p_{\min}(n),& \text{otherwise},
 \end{cases}
 \]
-and \(U(n)\) is a finite combination of the proved product and semidirect-product constructions. \(U(n)\) is only an upper bound, not a proved exact formula.
+and \(U(n)\) is a finite combination of the proved product, semidirect, \(pq^\alpha\), \(2q^2\) and \(pq\) constructions. \(U(n)\) is only an upper bound for general \(n\), not a proved exact formula.
 
 Further proved upper bound: if \(p\) is prime, \(b\) is a prime power, and \(p\mid b-1\), then
 \[
@@ -68,6 +68,12 @@ Further exact family: if \(p,q\) are distinct primes, \(b=q^\alpha\), \(p>b^2\),
 \boxed{\alpha(pq^\alpha)=(p+1)(b+1)=P(pq^\alpha).}
 \]
 
+Another exact family: for every odd prime power \(q\),
+\[
+\boxed{\alpha(2q^2)=3q^2.}
+\]
+This includes \(\alpha(18)=27\), \(\alpha(50)=75\), \(\alpha(98)=147\), \(\alpha(162)=243\), \(\alpha(242)=363\), \(\alpha(338)=507\), and so on. In the \(pb\) notation it is the case \(p=2,\ b=q^2\); the exact value is \(pb+b\), so the bound \(pb+b+1\) is not tight. See [proof/2q2-exact.md](proof/2q2-exact.md) and [computation/2q2-family/](computation/2q2-family/).
+
 Computed/certified values include
 \[
 \alpha(6)=10,\qquad \alpha(12)=17,\qquad \alpha(15)=24,\qquad
@@ -76,10 +82,12 @@ Computed/certified values include
 
 ## Paper
 
-- [Complete 20-page Chinese paper (PDF)](paper/solution.pdf)
+- [20-page Chinese paper (PDF, origin/main version)](paper/solution.pdf)
 - [LaTeX source](paper/solution.tex)
 
-The paper contains the literature review, complete proofs for prime powers and \(pq\), the fixed-\(C_n^2\) formula, general upper/lower bounds, computation certificates, counterexamples to natural closed-form guesses, and the precise boundary of what remains unresolved.
+> The LaTeX source has been extended locally with §5.7 (the \(n=2q^2\) family); the checked-in PDF predates this addition and should be rebuilt with XeLaTeX. The local MiKTeX/expl3 mismatch prevented rebuilding it here.
+
+The paper contains the literature review, complete proofs for prime powers, \(pq\), \(pq^\alpha\) and \(n=2q^2\), the fixed-\(C_n^2\) formula, general upper/lower bounds, computation certificates, counterexamples to natural closed-form guesses, and the precise boundary of what remains unresolved.
 
 ## Repository layout
 
@@ -93,6 +101,7 @@ computation/           Reproducible scripts, results, and coverage certificates
   order324/            Complete n=18 certification over all 176 groups of order 324
   order400/            Complete n=20 certification over all 221 groups of order 400
   order784/            Complete n=28 certification over all 172 groups of order 784
+  2q2-family/          Explicit covers and checks for alpha(2q^2)=3q^2
   order1936/           Scripts for the platform-assisted n=44 computation (not a certified result here)
 ```
 
@@ -103,6 +112,7 @@ Key documents:
 - `proof/partition-approach.md`: equal-partition structure and the \(n=12\) computation.
 - `proof/general-n.md`: final synthesis for arbitrary \(n\), including unresolved gaps.
 - `proof/pqalpha-general.md`: general \(n=pq^\alpha\) structure, Sylow bounds, and the exact values for \(n=18,20,28\).
+- `proof/2q2-exact.md`: the exact family \(\alpha(2q^2)=3q^2\) for odd prime powers \(q\), with the faithful \(C_2^2\)-action construction.
 - `proof/pq2-q2.md`: the \(n=4p\) analysis, Burnside reduction, and the \(p\ge5\) lower-bound gap.
 - `research/pqalpha-literature.md`: targeted literature search for \(n=pq^\alpha\).
 - `research/citation-review.md`: full-text, theorem-and-page verification of Jungnickel (1999), Jungnickel–Storme (2001), and Foguel et al. (2025), all upgraded to A-level evidence.
@@ -142,6 +152,18 @@ python computation/composite_constructions.py
 python computation/order144_products.py
 ```
 
+New \(2q^2\)-family checks:
+```bash
+cd computation/2q2-family
+sha256sum -c SHA256SUMS.txt
+python verify_n18_cover.py
+python explicit_2q2_cover.py 3 5 7 11 13
+python explicit_2q2_cover_q9.py
+# Optional full solver rerun; this rewrites n18_results.json:
+python n18_min27.py
+python n18_nonnormal_uncoverable.py
+```
+
 The order-36 script downloads public GroupNames pages on its first run. Exact rerun commands for the full order-144 and order-225 GAP calculations are in `computation/order144/verification.md` and `computation/order225/results.md`.
 
 Build the paper:
@@ -159,6 +181,7 @@ xelatex solution.tex
   \[
   32\le\alpha(30)\le60.
   \]
+- The family \(\alpha(2q^2)=3q^2\) is proved for every odd prime power \(q\), so \(n=18,50,98,162,\ldots\) are all settled; the \(n=18\) value also has the independent 176-group certificate. See `proof/2q2-exact.md`. 
 - The \(n=12\) certificate uses a complete enumeration of the 197 groups of order 144 with exact integer programming. One instance timed out, but its certified dual lower bound is 18, so it cannot affect the global minimum 17.
 - The \(n=15\) certificate is complete: all 6 groups of order 225 were enumerated, with no timeout.
 - The \(n=44\) platform-assisted run is recorded in `research/ustc-platform.md`; it is not used as a certified value in the paper.
