@@ -307,3 +307,15 @@ U,\qquad e_3+U,\qquad e_4+W,\qquad e_1+e_4+W
 - `proof/partition-approach.md`、`computation/order144/verification.md`：\(\alpha(12)=17\) 的既有完整计算与离线审计。
 - `proof/interpretation-check.md`：量词区分与固定 \(C_n^2\) 的 \(\psi(n)\) 公式。
 - `research/primary-sources.md`、`research/sequence-lookup.md`：原始来源证据等级、数列与定向引文检索的边界。
+
+---
+
+## 7. 后续新增精确族（本报告定稿后加入）
+
+后续工作证明了无限族
+\[
+\alpha(2q^2)=3q^2\qquad(q\text{ 为奇素数幂}),
+\]
+特别地 \(\alpha(18)=27\)。上界由忠实 \(C_2^2\)-作用群 \(\mathbb F_q^4\rtimes C_2^2\) 与 \(\mathrm{AG}(3,q)\) 的仿射线铺砌构造；下界由正规 Sylow 计数（\(\ell>3\)）或 \(A_4\) 商论证（\(\ell=3\)）给出。完整证明见 `proof/2q2-exact.md`，计算证书见 `computation/2q2-family/`。
+
+因此本报告第 0、4 节中 \(n=18\) 的早期区间 \(20\le\alpha(18)\le28\) 已被精确值 \(27\) 取代；该值另有远端仓库 \(176\) 个 \(324\) 阶群的完整枚举证书。本报告其余关于一般 \(n\) 的边界声明仍然有效。
