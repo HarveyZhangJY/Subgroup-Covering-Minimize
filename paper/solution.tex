@@ -100,7 +100,7 @@
 \begin{equation}\label{eq:exponent}
  G\in\calU_n\quad\Longrightarrow\quad \exp(G)\mid n,
 \end{equation}
-因为每个元素都属于某个 $n$ 阶子群。该条件并不充分，$C_3\times A_4$ 就是指数为 $6$ 的整除性满足、却不能由六阶子群覆盖的例子。
+因为每个元素都属于某个 $n$ 阶子群。该条件并不充分，$C_3\times A_4$ 就是指数为 $6$ 的整除性满足、却不能由六阶子群覆盖的例子。该必要条件亦见 Jungnickel \cite{Jungnickel1999} Proposition 2.1（p.415）、Jungnickel--Storme \cite{JungnickelStorme2001} Proposition 2.1（p.194）与 Foguel 等 \cite{Foguel2025} Lemma 2.1（p.353）。
 
 \section{主要结论与结论边界}
 \subsection{精确结果}
@@ -180,23 +180,25 @@
 \endhead
 Isaacs (1973), \emph{Equally partitioned groups} \cite{Isaacs1973} & A &
 Theorem 6（p.111，证明续至 p.112）及 p.109 的逆方向给出：有限群有等阶真子群划分，当且仅当它是非循环、指数为某素数 $p$ 的 $p$ 群。Theorem 10 还给出非阿贝尔例，故一般等阶划分群不全是初等阿贝尔群。\\
-Jungnickel (1999), \emph{On small congruence covers} \cite{Jungnickel1999} & B &
-出版方摘要转录与 zbMATH 专家评论一致支持：$|G|=s^2$，$e=r-s-1$，$p$ 为 $s$ 的最小素因子，则 $e\le p-2$ 蕴含 $G$ 初等阿贝尔且覆盖几何化。本文用它得到非素数幂下界和本题等号群分类。全文受访问防护阻断，故不标未核实的定理号。\\
-Jungnickel--Storme (2001), \emph{Packing and covering groups with subgroups} \cite{JungnickelStorme2001} & B &
-已核实范围是固定阿贝尔 $p$ 群中 $p^t$-cover/packing 的上下界及初等阿贝尔刻画，不是任意 $n$ 的存在型一般公式。评论没有可安全转录的精确界，本文不作补写。\\
+Jungnickel (1999), \emph{On small congruence covers} \cite{Jungnickel1999} & A &
+Theorem 1.4（p.415）：设 $|G|=s^2$，congruence cover 指 $r=s+1+e$ 个 $s$ 阶子群之并，$p$ 为 $s$ 的最小素因子；则 $e\le p-2$（等价于 $r\le s+p-1$）迫使 $G$ 初等阿贝尔，原文紧接一句指出此时覆盖几何化。逆否形式见 Theorem 3.3（p.417）：非初等阿贝尔群的一切此类覆盖满足 $e\ge p-1$。本文用它得到非素数幂下界与等号群分类；同文 Theorem 3.4 与 Proposition 4.1（p.418）另给出幂零群的精确值。\\
+Jungnickel--Storme (2001), \emph{Packing and covering groups with subgroups} \cite{JungnickelStorme2001} & A &
+全文 24 页已读。cover 方面的结果限于 $p$ 群：Proposition 2.5（p.195）对任意阶 $p^d$ 的群给出 $\kappa(G,p^{d-1})=p+1$；Theorem 4.1（p.200）与 Corollary 4.2（p.201）给出阿贝尔 $p$ 群 $p^t$-cover 的 excess 下界与初等阿贝尔刻画；Theorem 6.1（pp.203--204）给出一般 $p$ 群的构造上界。对任意 $s$ 只有 Proposition 2.1（p.194，packing 侧为 Theorem 3.5，p.198）与转述 1999 年结果的 Result 1.3（p.192）。原文 p.213 自己把“任意群或幂零群”列为公开问题，故其不构成任意 $n$ 的存在型一般公式。\\
 Velasquez-Berroteran (2022)，学位论文/arXiv 预印本 \cite{Velasquez2022} & A &
 Theorem 13 给出等阶覆盖的指数必要条件；论文主要研究存在性，并把 equal covering number 列为后续研究方向。它不是同行评审期刊论文。\\
-Foguel 等，\emph{Concerning equally covered groups} \cite{Foguel2025} & B &
-已核实摘要涉及等阶覆盖的存在性与结构，未据此声称含有最小数公式；正文未取得。\\
+Foguel 等，\emph{Concerning equally covered groups} \cite{Foguel2025} & A &
+全文 14 页已读。Lemma 2.1（p.353）给出等阶覆盖的必要条件 $\exp(G)\mid|H_i|$ 与 $\pi(H_i)=\pi(G)$；Lemma 2.10（p.356）证明 $\exp(G)=|G|/p$（$p$ 为 $|G|$ 的最小素因子）时存在由 $p+1$ 个指数 $p$ 的正规子群组成的极大等阶覆盖，为 $\alpha(p)=p+1$ 提供文献旁证。全文研究等阶覆盖的存在性与结构（单群、笛卡尔幂、$\xi(G)$），不含最小成员数公式，也不涉及 $\alpha(n)$。\\
 \bottomrule
 \end{longtable}
 
-Jungnickel 论文关于 sharp 构造的二手转录存在一处数量差异：出版方摘要给出 excess $e=p$ 的构造，zbMATH 评论称 $p$ 群情形有 $e=p-1$ 的 sharp 例。两者对本文实际使用的“小覆盖必初等阿贝尔”没有冲突；在正文未取得前，本文不据此增加任何精确最小值结论。
+Jungnickel (1999) 的 sharp 构造不构成矛盾，而是两条并存的命题：Theorem 3.3（p.417）断言非初等阿贝尔群的 excess 满足 $e\ge p-1$；Proposition 4.2（p.418）在 $G=Z_{p^d}\times Z_{p^d}$ 上达到 $\kappa(G)=p^d+p^{d-1}$，取 $d=2$ 得 $e=p-1$，原文 p.419 明言此例说明 Theorem 3.3 的界“can be sharp”。 
+
+Proposition 4.3（p.419）在 $G=Z_{p^2}\times Z_p^{2d-2}$（$d\ge2$）上给出 $\kappa(G)=p^d+p+1$，即 $e=p$，说明对素数幂 $s$ 该界至多差 $1$。摘要中的 $s+p+1$ 与 zbMATH 评论中的 $e=p-1$ 分别指这两条，二者互不冲突；本文实际使用的“小覆盖必初等阿贝尔”不依赖其中任何一条。
 
 \subsection{检索范围与限制}
 共享文献报告组合检索了 subgroup/equal/congruence covering、fixed-order subgroups、group partition、packing 等英文词及有限群、同阶子群覆盖、循环子群覆盖等中文词，追踪了出版方页面、Crossref、OpenAlex、zbMATH、arXiv、机构库、OEIS 与 Stack Exchange。一般 covering number 允许成员异阶，不能直接套用；OEIS 的计数解释也不能替代覆盖最小性的证明。
 
-访问限制包括 Jungnickel (1999) 正文被防护拦截、Jungnickel--Storme (2001) 出版页返回 403、Foguel 等论文正文连接失败。因此准确结论是：\textbf{在本次检索和复核范围内，已有等阶划分分类、小覆盖结构定理、素数幂构造和若干固定群界，但未找到任意 $n$ 的存在型一般精确闭式。}
+本次已取得三篇文献的完整正文（Jungnickel (1999) 为作者自排终稿、页码与期刊 413--421 一致；Jungnickel--Storme (2001) 与 Foguel 等 (2025) 为出版排版 PDF），故三者均由 B 级升为 A 级；此前“正文被防护拦截”“出版页返回 403”“正文连接失败”的记录不再适用。因此准确结论是：\textbf{在本次检索和复核范围内，已有等阶划分分类、小覆盖结构定理、素数幂构造和若干固定群界，但未找到任意 $n$ 的存在型一般精确闭式。}
 
 \subsection{OEIS 与前向引文定向反查的限定说明}\label{sec:sequence-lookup}
 2026 年 11 月 11 日的定向反查使用已认证数列
@@ -276,7 +278,7 @@ Jungnickel 论文关于 sharp 构造的二手转录存在一处数量差异：�
 \end{equation}
 \end{proposition}
 \begin{proof}
-Jungnickel 的小同余覆盖定理（证据 B，见第 \ref{tab:literature} 表）表明：若 $s^2$ 阶群能由 $r\le s+p-1$ 个 $s$ 阶子群覆盖，其中 $p$ 为 $s$ 的最小素因子，则该群必为初等阿贝尔群。若 $n$ 不是素数幂，则 $n^2$ 阶群不可能是初等阿贝尔群，故不可能存在 $m\le n+p-1$ 的覆盖，即 $m\ge n+p$。对所有群取最小值得式 \eqref{eq:jungnickel-lower}。
+Jungnickel 的小同余覆盖定理（证据 A：Theorem 1.4，p.415；逆否形式 Theorem 3.3，p.417）表明：若 $s^2$ 阶群能由 $r\le s+p-1$ 个 $s$ 阶子群覆盖，其中 $p$ 为 $s$ 的最小素因子，则该群必为初等阿贝尔群。若 $n$ 不是素数幂，则 $n^2$ 阶群不可能是初等阿贝尔群，故不可能存在 $m\le n+p-1$ 的覆盖，即 $m\ge n+p$。对所有群取最小值得式 \eqref{eq:jungnickel-lower}。
 \end{proof}
 该下界不是一般等式：$\alpha(6)=10>8$，$\alpha(12)=17>14$，$\alpha(15)=24>18$。
 
@@ -318,7 +320,7 @@ Jungnickel 的小同余覆盖定理（证据 B，见第 \ref{tab:literature} 表
 \end{equation}
 其阶为 $\prod_iq_i=n$，总数为 $\prod_i(q_i+1)$。任给 $g=(g_1,\dots,g_r)\in G$，逐坐标选取含 $g_i$ 的直线 $L_i$，便有 $g\in H_{(L_1,\dots,L_r)}$。故这些子群覆盖 $G$。
 \end{proof}
-这是本次共享成果中的显式初等构造，不应冒充已核实的文献最优公式。
+该构造与计数即 Jungnickel (1999) 的 Proposition 4.1（p.418）：对 $G=\mathrm{EA}(q_1^2)\times\cdots\times\mathrm{EA}(q_r^2)$ 有 $\kappa(G)=(q_1+1)\cdots(q_r+1)$；同文 Theorem 3.4（p.418）进一步证明，当 $n$ 含至少两个不同素因子时，任何幂零群 $G$（$|G|=n^2$）的 $n$-cover 都满足 $|\mathcal C|\ge\prod_i(q_i+1)$。因此定理 \ref{thm:general-upper} 的上界在幂零群类中恰为最小值，$\alpha(n)$ 若要更小只能由非幂零群实现——这与 $\alpha(12)=17<20=P(12)$ 的见证群 $A_4^2$ 非幂零完全一致。
 
 \subsection{直积规则}
 \begin{proposition}\label{prop:product}

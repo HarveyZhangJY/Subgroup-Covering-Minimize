@@ -105,6 +105,7 @@ Key documents:
 - `proof/pqalpha-general.md`: general \(n=pq^\alpha\) structure, Sylow bounds, and the exact values for \(n=18,20,28\).
 - `proof/pq2-q2.md`: the \(n=4p\) analysis, Burnside reduction, and the \(p\ge5\) lower-bound gap.
 - `research/pqalpha-literature.md`: targeted literature search for \(n=pq^\alpha\).
+- `research/citation-review.md`: full-text, theorem-and-page verification of Jungnickel (1999), Jungnickel–Storme (2001), and Foguel et al. (2025), all upgraded to A-level evidence.
 - `proof/semidirect-upper.md`: the \(pb+b+1\) construction.
 - `research/coordination.md`: shared coordination log showing how parallel research and computation were deduplicated.
 
