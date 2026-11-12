@@ -59,6 +59,23 @@ python audit.py
 
 See `order225/results.md` for the complete classification and GAP rerun commands.
 
+### The \(2q^2\) family
+
+`2q2-family/` contains the explicit \(3q^2\)-subgroup covers for \(n=2q^2\) (\(q\) an odd prime power), the exact MILP check for the \(n=18\) witness group, and the non-normal-Sylow-3 exclusion check. The theorem is proved in `../proof/2q2-exact.md`.
+
+```bash
+cd computation/2q2-family
+sha256sum -c SHA256SUMS.txt
+python verify_n18_cover.py
+python explicit_2q2_cover.py 3 5 7 11 13
+python explicit_2q2_cover_q9.py
+# Optional full solver rerun; this rewrites n18_results.json:
+python n18_min27.py
+python n18_nonnormal_uncoverable.py
+```
+
+See `2q2-family/results.md` for details.
+
 ## Rerunning raw GAP exports
 
 GAP is not bundled. Install GAP 4.10.2 or later with the SmallGrp package. Run each GAP script from its own directory so relative output paths write beside the script:

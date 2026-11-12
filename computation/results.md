@@ -134,3 +134,15 @@ python computation/verify_all.py
 - [GroupNames（36 阶结构、SmallGroup ID、置换生成元）](https://people.maths.bris.ac.uk/~matyd/GroupNames/index.html)
 - [GAP SmallGrp 文档](https://docs.gap-system.org/pkg/smallgrp/doc/chap1.html)
 - [100 阶以内群的 GAP StructureDescription/元素阶输出](https://zhuanlan.zhihu.com/p/668173538)
+
+## 8. 后续新增：\(n=2q^2\) 家族
+
+后续工作证明了对每个奇素数幂 \(q\)，
+\[
+\alpha(2q^2)=3q^2,
+\]
+特别地 \(\alpha(18)=27\)。显式覆盖、MILP 验证与非正规 Sylow 3 检查归档于 `computation/2q2-family/`；完整证明见 `proof/2q2-exact.md`。
+
+- \(q=3\)：\(G=\mathbb F_3^4\rtimes C_2^2\) 有 370 个 18 阶子群，精确 MILP 最优值 27、对偶界 27；27 个所选子群经独立重展开并集为 324/324。
+- \(q=5,7,9,11,13\)：显式构造分别给出 75、147、243、363、507 个阶为 \(2q^2\) 的子群，并集分别覆盖各自的全部 \(n^2\) 个元素。
+- 非正规 Sylow 3 的群 \(V\rtimes C_3^4\)（\(V=C_2^2\)）全部 39 个 18 阶子群只覆盖 108/324 个元素，MILP 不可行，与 \(A_4\) 商论证一致。
