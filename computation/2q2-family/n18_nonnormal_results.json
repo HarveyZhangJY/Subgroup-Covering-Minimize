@@ -1,0 +1,12 @@
+{
+ "subgroups": 39,
+ "union_size": 108,
+ "uncoverable": true,
+ "milp": {
+  "status": 2,
+  "objective": null,
+  "dual_bound": null,
+  "variables": 39
+ },
+ "selected_sets": null
+}
