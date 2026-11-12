@@ -1,0 +1,99 @@
+id  36: vars=143 cover=30 bound=30.000000 OPT 17.88s
+id  37: vars=118 cover=33 bound=33.000000 OPT 0.22s
+id  39: vars=126 cover=33 bound=33.000000 OPT 0.01s
+id  40: vars= 63 cover=33 bound=33.000000 OPT 0.00s
+id  41: vars= 63 cover=33 bound=33.000000 OPT 0.00s
+id  46: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  47: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  48: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  49: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  50: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  51: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  52: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  53: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  54: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  55: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  56: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  57: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  58: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id  59: NOT COVERABLE by its 39 subgroups of order 18 (216 elements uncovered)
+id  60: NOT COVERABLE by its 39 subgroups of order 18 (216 elements uncovered)
+id  61: vars= 39 cover=30 bound=30.000000 OPT 0.00s
+id  62: vars= 66 cover=31 bound=31.000000 OPT 0.01s
+id  63: vars=118 cover=31 bound=31.000000 OPT 0.03s
+id  64: vars= 39 cover=30 bound=30.000000 OPT 0.00s
+id  68: vars= 82 cover=31 bound=31.000000 OPT 0.03s
+id  69: vars=118 cover=31 bound=31.000000 OPT 0.02s
+id  70: vars= 55 cover=31 bound=31.000000 OPT 0.00s
+id  71: vars= 55 cover=31 bound=31.000000 OPT 0.00s
+id  72: vars= 55 cover=31 bound=31.000000 OPT 0.00s
+id  73: vars= 55 cover=31 bound=31.000000 OPT 0.00s
+id  74: vars=247 cover=30 bound=30.000000 OPT 0.12s
+id  75: vars=118 cover=31 bound=31.000000 OPT 0.03s
+id  77: vars=118 cover=31 bound=31.000000 OPT 0.03s
+id  78: vars= 55 cover=31 bound=31.000000 OPT 0.00s
+id  79: vars= 55 cover=31 bound=31.000000 OPT 0.00s
+id  80: vars= 55 cover=31 bound=31.000000 OPT 0.00s
+id  81: vars= 39 cover=36 bound=36.000000 OPT 0.00s
+id  82: vars= 66 cover=39 bound=39.000000 OPT 0.02s
+id  83: vars= 39 cover=36 bound=36.000000 OPT 0.00s
+id  86: vars= 66 cover=39 bound=39.000000 OPT 0.03s
+id  87: vars= 39 cover=39 bound=39.000000 OPT 0.00s
+id  88: vars= 39 cover=39 bound=39.000000 OPT 0.00s
+id  89: vars= 39 cover=39 bound=39.000000 OPT 0.01s
+id 114: NOT COVERABLE by its 86 subgroups of order 18 (24 elements uncovered)
+id 115: NOT COVERABLE by its 54 subgroups of order 18 (24 elements uncovered)
+id 116: vars=131 cover=30 bound=30.000000 OPT 0.02s
+id 117: vars=119 cover=30 bound=30.000000 OPT 0.48s
+id 118: NOT COVERABLE by its 86 subgroups of order 18 (24 elements uncovered)
+id 119: vars=242 cover=28 bound=28.000000 OPT 0.45s
+id 120: vars=262 cover=30 bound=30.000000 OPT 0.03s
+id 121: vars=235 cover=27 bound=27.000000 OPT 1.04s
+id 122: vars=211 cover=30 bound=30.000000 OPT 1.22s
+id 123: NOT COVERABLE by its 118 subgroups of order 18 (24 elements uncovered)
+id 124: vars=207 cover=30 bound=30.000000 OPT 1.18s
+id 125: NOT COVERABLE by its 63 subgroups of order 18 (24 elements uncovered)
+id 126: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id 127: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id 128: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id 129: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id 130: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id 131: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id 132: NOT COVERABLE by its 12 subgroups of order 18 (216 elements uncovered)
+id 133: NOT COVERABLE by its 39 subgroups of order 18 (216 elements uncovered)
+id 134: NOT COVERABLE by its 39 subgroups of order 18 (216 elements uncovered)
+id 135: NOT COVERABLE by its 39 subgroups of order 18 (216 elements uncovered)
+id 136: vars= 66 cover=31 bound=31.000000 OPT 0.05s
+id 137: vars= 54 cover=37 bound=37.000000 OPT 0.03s
+id 138: vars=111 cover=30 bound=30.000000 OPT 0.27s
+id 139: vars= 99 cover=36 bound=36.000000 OPT 0.14s
+id 140: vars= 66 cover=31 bound=31.000000 OPT 0.03s
+id 141: vars= 54 cover=37 bound=37.000000 OPT 0.01s
+id 142: vars=118 cover=31 bound=31.000000 OPT 0.03s
+id 143: vars= 66 cover=31 bound=31.000000 OPT 0.01s
+id 144: vars=199 cover=30 bound=30.000000 OPT 0.12s
+id 145: vars=163 cover=30 bound=30.000000 OPT 0.15s
+id 146: vars=118 cover=31 bound=31.000000 OPT 0.04s
+id 147: vars= 55 cover=31 bound=31.000000 OPT 0.00s
+id 148: vars= 55 cover=31 bound=31.000000 OPT 0.00s
+id 149: vars=418 cover=31 bound=31.000000 OPT 0.52s
+id 150: vars=307 cover=30 bound=30.000000 OPT 0.22s
+id 151: vars= 66 cover=39 bound=39.000000 OPT 0.02s
+id 152: vars=147 cover=36 bound=36.000000 OPT 0.21s
+id 153: vars= 66 cover=39 bound=39.000000 OPT 0.02s
+id 154: vars= 39 cover=39 bound=39.000000 OPT 0.00s
+id 160: NOT COVERABLE by its 39 subgroups of order 18 (216 elements uncovered)
+id 165: vars=162 cover=33 bound=33.000000 OPT 8.59s
+id 166: vars=266 cover=30 bound=30.000000 OPT 1.77s
+id 167: vars=174 cover=32 bound=32.000000 OPT 4.20s
+id 168: vars=1378 cover=30 bound=30.000000 OPT 11.45s
+id 169: vars=1286 cover=28 bound=28.000000 OPT 4.59s
+id 170: vars=370 cover=27 bound=27.000000 OPT 10.00s
+id 171: NOT COVERABLE by its 39 subgroups of order 18 (216 elements uncovered)
+id 172: vars=234 cover=34 bound=34.000000 OPT 7.01s
+id 173: vars=246 cover=28 bound=28.000000 OPT 0.19s
+id 174: vars=442 cover=28 bound=28.000000 OPT 0.46s
+id 175: vars=2470 cover=28 bound=28.000000 OPT 27.15s
+id 176: vars=390 cover=30 bound=30.000000 OPT 0.15s
+solved 97 exported groups -> solutions-18.jsonl
+EXIT=0

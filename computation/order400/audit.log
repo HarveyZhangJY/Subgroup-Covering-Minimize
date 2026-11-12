@@ -1,0 +1,29 @@
+SHA256 covers-20.jsonl: e04cce3da20261155a225e4502f8774d5e95b38774a6fcb748420a096d4a598a (matches SHA256SUMS.txt)
+SHA256 solutions-20.jsonl: 698ba42105db90ea389a1e3ba2d5d822fccb0864d78ec92037e2dd9d88081a53 (matches SHA256SUMS.txt)
+400-group summary: exponent-excluded=125, exported=96, noncoverable=1, coverable=95
+Solver summary: optimal=92, timeout=3
+Distribution of proved-optimal cover values (value: count, ids):
+   30:   1  [221]
+   31:  11  [117, 118, 137, 141, 144, 148, 151, 155, 158, 162, 205]
+   33:   1  [218]
+   34:   9  [99, 102, 107, 124, 125, 176, 177, 193, 200]
+   35:  11  [72, 73, 172, 175, 179, 195, 214, 215, 216, 217, 219]
+   36:  32  [71, 74, 75, 108, 109, 119, 126, 129, 130, 134, 138, 145, '...']
+   37:   6  [83, 86, 91, 182, 183, 190]
+   38:  16  [84, 85, 100, 101, 181, 184, 186, 187, 188, 189, 191, 194, '...']
+   42:   4  [110, 201, 203, 204]
+   50:   1  [207]
+Time-out intervals (cover is a constructed upper bound, lower_bound is certified): 180:[34, 35], 192:[35, 37], 220:[30, 36]
+TIMEOUT SmallGroup(400,180): status=1, dual lower bound=34.000000 (ceil 34), constructed cover=35
+TIMEOUT SmallGroup(400,192): status=1, dual lower bound=35.000000 (ceil 35), constructed cover=37
+TIMEOUT SmallGroup(400,220): status=1, dual lower bound=30.000000 (ceil 30), constructed cover=36
+Noncoverable groups (1):
+  SmallGroup(400,213) exp=10 vars=35 missing=320 element orders=[5] | C5 x ((C2 x C2 x C2 x C2) : C5)
+GLOBAL MINIMUM (proved): 30, attained by 1 group(s): [221]; certified global lower bound=30
+MIN SmallGroup(400,221): status=0, cover=30, dual_bound=30.0, union=400/400, exp=10
+  structure=C10 x C10 x C2 x C2  Sylow(2) normal=True  Sylow(5) normal=True  variables=210
+  selected=[2, 4, 11, 15, 30, 33, 45, 46, 54, 55, 58, 65, 67, 69, 72, 86, 88, 97, 99, 117, 119, 122, 127, 143, 148, 149, 168, 180, 184, 188]
+Sylow q normal: 92 proved-optimal groups, min=30
+Candidate SmallGroup(400,205) = (C5 : C4) x (C5 : C4): status=0, cover=31, dual_bound=31.0, vars=82, union=400/400
+Regression guard: matches the figures recorded in verification.md
+AUDIT RESULT: PASS; all 221 groups are accounted for and every saved selected cover was re-expanded and checked without rerunning GAP or HiGHS.

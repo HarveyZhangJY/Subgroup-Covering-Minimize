@@ -1,0 +1,27 @@
+audit root: C:\Users\Felix\Documents\deepseek-harness\group-split2\computation\order324
+SHA256 covers-18.jsonl: a4a69303573ecf2c1319c666758c68ca70b52bce4a7d9e6b3d4d32fed52e217a
+SHA256 solutions-18.jsonl: bfdeb46a8e1117eaec1c0905dcfb9f1fb847e7f8e226b6be3e4bbc37dfc810b2
+SHA256 export-18.log: ebdd5f79c260b0eae4c609998edbe15e0d2363e2e0ea904149e8484e2133fe67
+export log: 176/176 ids accounted, exponent-excluded=79, exported=97
+covers: 97 groups, 14182 subgroups of order 18 in total (min 12, max 2470 per group)
+solutions: noncoverable=32, optimal=65, timeout=0
+GLOBAL MINIMUM alpha(18) over covered groups = 27
+  attained by 2 groups: [121, 170]
+  cover-value distribution (proved optimal only):
+    27: 2 groups -> [121, 170]
+    28: 5 groups -> [119, 169, 173, 174, 175]
+    30: 16 groups -> [36, 61, 64, 74, 116, 117, 120, 122, 124, 138, 144, 145, 150, 166, 168, 176]
+    31: 21 groups -> [62, 63, 68, 69, 70, 71, 72, 73, 75, 77, 78, 79, 80, 136, 140, 142, 143, 146, 147, 148, 149]
+    32: 1 groups -> [167]
+    33: 5 groups -> [37, 39, 40, 41, 165]
+    34: 1 groups -> [172]
+    36: 4 groups -> [81, 83, 139, 152]
+    37: 2 groups -> [137, 141]
+    39: 8 groups -> [82, 86, 87, 88, 89, 151, 153, 154]
+CERTIFICATES for the global minimum:
+  CERT27 SmallGroup(324,121): status=0, cover=27, dual_bound=26.999999999999996, union=324/324
+    selected=[0, 13, 24, 28, 36, 37, 38, 39, 40, 41, 42, 43, 44, 60, 62, 65, 108, 109, 110, 111, 112, 113, 128, 134, 191, 219, 234]
+  CERT27 SmallGroup(324,170): status=0, cover=27, dual_bound=26.999999999999982, union=324/324
+    selected=[28, 36, 86, 94, 122, 133, 158, 163, 216, 224, 232, 250, 273, 278, 319, 320, 321, 322, 323, 324, 325, 326, 327, 335, 351, 355, 363]
+A 27-subgroup cover EXISTS; it is certified by the selected subgroups above and by the matching MILP dual bound 27 (optimality).
+AUDIT RESULT: PASS; 176/176 groups accounted for (79 exponent-excluded, 32 non-coverable, 65 proved optimal, 0 time-limited with dual bounds); every saved selected cover was re-expanded and checked to cover 324/324.

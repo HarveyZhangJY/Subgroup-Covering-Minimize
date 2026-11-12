@@ -1,0 +1,206 @@
+# n = 28: 0-1 set-cover solves for every exported SmallGroup(784, i).
+# Solver: scipy 1.13.1 / HiGHS via scipy.optimize.milp, integrality 0/1,
+# mip_rel_gap = 0, time limit 120 s per instance.  status 0 = proved optimal,
+# status 1 = time limit hit (cover is a constructed upper bound, bound is the
+# dual lower bound), "UNCOVERABLE" = the 28-subgroups do not cover all 784
+# elements.
+#
+# The instances were solved in several batches to keep the wall-clock time
+# reasonable; the union of the batches is exactly the 75 exported ids.
+#   batch A : one single process over all ids; its stdout was truncated when the
+#             run was restarted after a HiGHS crash, so ids without a line below
+#             were completed in that pass (their records are in solutions-28.jsonl)
+#   batch B*: three parallel workers over a stride partition of the remaining ids
+#   batch Q*: remaining / re-run ids
+# Every id appears at least once; where an id was re-run, the last line is the
+# one recorded in solutions-28.jsonl.
+#
+# ---------------------------------------------------------------- batch A
+id   59 vars   152 rows  178 status 0 cover 50 bound 50.0 t 0.017s merged/presolve=False
+id   60 vars   184 rows  206 status 0 cover 49 bound 49.00000000000004 t 0.237s merged/presolve=False
+id   61 vars   376 rows  288 status 1 cover 49 bound 46.00000000001243 t 120.022s merged/presolve=False
+id   62 vars   152 rows  178 status 0 cover 50 bound 50.00000000000001 t 0.16s merged/presolve=False
+id   63 vars   152 rows  178 status 0 cover 50 bound 50.0 t 0.23s merged/presolve=False
+id   71 vars    56 rows   98 status 0 cover 51 bound 51.0 t 0.006s merged/presolve=False
+id   72 vars    56 rows   98 status 0 cover 52 bound 52.0 t 0.006s merged/presolve=False
+id   73 vars    56 rows   98 status 0 cover 52 bound 52.0 t 0.007s merged/presolve=False
+id   74 vars    88 rows  126 status 0 cover 51 bound 51.0 t 0.006s merged/presolve=False
+id   79 vars    88 rows  128 status 0 cover 51 bound 51.0 t 0.019s merged/presolve=False
+id   87 vars   248 rows  250 status 0 cover 46 bound 46.0 t 2.947s merged/presolve=False
+id   88 vars   248 rows  250 status 0 cover 52 bound 52.00000000000005 t 0.176s merged/presolve=False
+id   89 vars   248 rows  250 status 0 cover 52 bound 51.99999999999999 t 2.345s merged/presolve=False
+
+# ---------------------------------------------------------------- parts\solve-28-p1.log
+Traceback (most recent call last):
+  File "C:\Users\Felix\Documents\deepseek-harness\group-split2\computation\order784\solve-covers.py", line 205, in <module>
+    main()
+  File "C:\Users\Felix\Documents\deepseek-harness\group-split2\computation\order784\solve-covers.py", line 153, in main
+    proc = subprocess.run(
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Felix\anaconda3\Lib\subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Felix\anaconda3\Lib\subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Felix\anaconda3\Lib\subprocess.py", line 1630, in _communicate
+    raise TimeoutExpired(self.args, orig_timeout)
+subprocess.TimeoutExpired: Command '['C:\\Users\\Felix\\anaconda3\\python.exe', 'C:\\Users\\Felix\\Documents\\deepseek-harness\\group-split2\\computation\\order784\\solve-covers.py', '--one', 'computation/order784/parts/covers-28-p1.jsonl', '28', '120.0', '90', '0', 'merged']' timed out after 420.0 seconds
+
+# ---------------------------------------------------------------- parts\solve-28-p2.log
+id   95 vars   280 rows  268 status 0 cover 46 bound 46.00000000000003 t 1.709s merged/presolve=False
+id   98 vars    56 rows   90 status 0 cover 56 bound 56.0 t 0.012s merged/presolve=False
+id  110 vars    56 UNCOVERABLE missing 588 orders [4]
+id  117 vars   344 UNCOVERABLE missing 392 orders [4]
+id  120 vars   152 rows  172 status 0 cover 50 bound 49.99999999999999 t 0.022s merged/presolve=False
+id  123 vars   152 rows  172 status 0 cover 50 bound 50.0 t 0.019s merged/presolve=False
+id  126 vars   264 rows  280 status 0 cover 50 bound 50.00000000000001 t 0.548s merged/presolve=False
+id  129 vars   152 rows  172 status 0 cover 50 bound 50.00000000000003 t 0.022s merged/presolve=False
+id  132 vars   408 rows  316 status 1 cover 51 bound 45.000000000001606 t 120.353s merged/presolve=False
+id  135 vars   432 rows  316 status 1 cover 49 bound 46.00000000002824 t 120.021s merged/presolve=False
+id  138 vars   120 rows  154 status 0 cover 51 bound 51.0 t 0.016s merged/presolve=False
+id  141 vars    56 rows   92 status 0 cover 52 bound 52.0 t 0.009s merged/presolve=False
+id  144 vars    88 rows  128 status 0 cover 52 bound 52.0 t 0.026s merged/presolve=False
+id  147 vars   472 rows  348 status 1 cover 56 bound 46.000000000006 t 155.182s merged/presolve=False
+id  150 vars   696 rows  406 status 1 cover 52 bound 45.00000000024496 t 121.018s merged/presolve=False
+id  153 vars   248 rows  232 status 0 cover 52 bound 52.0 t 0.189s merged/presolve=False
+id  156 vars    88 rows  108 status 0 cover 56 bound 56.0 t 0.021s merged/presolve=False
+id  159 vars    56 rows   72 status 0 cover 56 bound 56.0 t 0.007s merged/presolve=False
+id  166 vars    56 UNCOVERABLE missing 588 orders [4]
+id  169 vars   664 rows  344 status 1 cover 47 bound 45.0 t 120.015s merged/presolve=False
+id  172 vars   280 rows  144 status 0 cover 40 bound 40.0 t 0.202s merged/presolve=False
+SOLVE DONE
+
+# ---------------------------------------------------------------- parts\solve-28-p3.log
+id   96 vars    56 rows   90 status 0 cover 48 bound 48.0 t 0.008s merged/presolve=False
+id  105 vars   144 UNCOVERABLE missing 196 orders [4]
+id  113 vars   120 UNCOVERABLE missing 392 orders [4]
+id  118 vars   152 rows  172 status 0 cover 50 bound 50.0 t 0.025s merged/presolve=False
+id  121 vars   152 rows  172 status 0 cover 50 bound 50.000000000000014 t 0.021s merged/presolve=False
+id  124 vars   208 rows  252 status 0 cover 50 bound 49.999999999999986 t 0.032s merged/presolve=False
+id  127 vars   184 rows  206 status 0 cover 49 bound 48.99999999999999 t 0.024s merged/presolve=False
+id  130 vars   376 rows  288 status 1 cover 51 bound 46.0 t 120.034s merged/presolve=False
+id  133 vars   152 rows  172 status 0 cover 50 bound 50.00000000000001 t 0.021s merged/presolve=False
+id  136 vars    56 rows   92 status 0 cover 52 bound 52.0 t 0.007s merged/presolve=False
+id  139 vars    56 rows   92 status 0 cover 52 bound 52.0 t 0.008s merged/presolve=False
+id  142 vars    56 rows   92 status 0 cover 52 bound 52.0 t 0.007s merged/presolve=False
+id  145 vars   120 rows  156 status 0 cover 51 bound 51.0 t 0.222s merged/presolve=False
+id  148 vars   696 rows  446 status 1 cover 52 bound 45.0 t 120.049s merged/presolve=False
+id  151 vars   248 rows  232 status 0 cover 52 bound 52.0 t 0.249s merged/presolve=False
+id  154 vars   280 rows  268 status 0 cover 52 bound 52.0 t 0.406s merged/presolve=False
+id  157 vars   120 rows  126 status 0 cover 48 bound 48.0 t 0.067s merged/presolve=False
+id  163 vars    35 UNCOVERABLE missing 672 orders [7, 14]
+id  167 vars    35 UNCOVERABLE missing 672 orders [7, 14]
+id  170 vars   280 rows  184 status 0 cover 49 bound 49.0 t 0.124s merged/presolve=False
+SOLVE DONE
+
+# ---------------------------------------------------------------- parts\solve-28-q1.log
+id   90 child exceeded 180s (merged, presolve=False, cuts=True); retrying
+id   90 child exceeded 180s (merged, presolve=False, cuts=False); retrying
+id   90 child crashed (rc=3221225477, reduction=merged, presolve=True); retrying
+id   90 vars   472 rows  784 status 0 cover 46 bound 46.000000000003915 t 43.847s full/presolve=False/cuts=0
+id  114 vars   120 UNCOVERABLE missing 392 orders [4]
+id  125 vars   264 rows  315 status 0 cover 50 bound 49.99999999999999 t 0.345s merged/presolve=False/cuts=0
+id  134 vars   240 rows  269 status 0 cover 49 bound 48.99999999999997 t 1.123s merged/presolve=False/cuts=0
+id  143 vars    56 rows   92 status 0 cover 52 bound 52.0 t 0.005s merged/presolve=False/cuts=0
+id  152 vars   248 rows  232 status 0 cover 52 bound 52.00000000000001 t 0.209s merged/presolve=False/cuts=0
+id  165 vars   200 UNCOVERABLE missing 196 orders [4]
+SOLVE DONE
+
+# ---------------------------------------------------------------- parts\solve-28-q2.log
+id   97 vars    88 rows  108 status 0 cover 48 bound 48.0 t 0.026s merged/presolve=False/cuts=0
+id  119 vars   152 rows  172 status 0 cover 50 bound 50.0 t 0.29s merged/presolve=False/cuts=0
+id  128 vars   152 rows  172 status 0 cover 50 bound 50.0 t 0.025s merged/presolve=False/cuts=0
+id  137 vars    88 rows  126 status 0 cover 51 bound 51.0 t 0.01s merged/presolve=False/cuts=0
+id  146 vars   248 rows  232 status 0 cover 52 bound 51.99999999999999 t 0.458s merged/presolve=False/cuts=0
+id  155 vars   504 rows  366 status 1 cover 53 bound 45.0 t 120.108s merged/presolve=False/cuts=8
+id  168 vars   344 UNCOVERABLE missing 392 orders [4]
+SOLVE DONE
+
+# ---------------------------------------------------------------- parts\solve-28-q3.log
+id  106 vars    88 UNCOVERABLE missing 196 orders [4]
+id  122 vars   152 rows  172 status 0 cover 50 bound 49.99999999999999 t 0.024s merged/presolve=False/cuts=0
+id  131 vars   216 rows  234 status 0 cover 58 bound 58.0 t 3.383s merged/presolve=False/cuts=8
+id  140 vars   120 rows  143 status 0 cover 50 bound 50.0 t 0.233s merged/presolve=False/cuts=0
+id  149 vars   248 rows  232 status 0 cover 52 bound 52.00000000000001 t 0.182s merged/presolve=False/cuts=0
+id  158 vars    56 rows   72 status 0 cover 56 bound 56.0 t 0.008s merged/presolve=False/cuts=0
+id  171 vars  1624 rows  464 status 1 cover 58 bound 40.0 t 120.02s merged/presolve=False/cuts=8
+SOLVE DONE
+
+# ---------------------------------------------------------------- final per-id table (from solutions-28.jsonl)
+#   id  vars rows status cover        bound  seconds
+   59   152  178      0    50    50.000000 0.017
+   60   184  206      0    49    49.000000 0.237
+   61   376  288      1    49    46.000000 120.022
+   62   152  178      0    50    50.000000 0.16
+   63   152  178      0    50    50.000000 0.23
+   71    56   98      0    51    51.000000 0.006
+   72    56   98      0    52    52.000000 0.006
+   73    56   98      0    52    52.000000 0.007
+   74    88  126      0    51    51.000000 0.006
+   79    88  128      0    51    51.000000 0.019
+   87   248  250      0    46    46.000000 2.947
+   88   248  250      0    52    52.000000 0.176
+   89   248  250      0    52    52.000000 2.345
+   90   472  784      0    46    46.000000 43.847
+   95   280  268      0    46    46.000000 1.709
+   96    56   90      0    48    48.000000 0.008
+   97    88  108      0    48    48.000000 0.026
+   98    56   90      0    56    56.000000 0.012
+  105   144    - UNCOVERABLE missing=196 orders=[4]
+  106    88    - UNCOVERABLE missing=196 orders=[4]
+  110    56    - UNCOVERABLE missing=588 orders=[4]
+  113   120    - UNCOVERABLE missing=392 orders=[4]
+  114   120    - UNCOVERABLE missing=392 orders=[4]
+  117   344    - UNCOVERABLE missing=392 orders=[4]
+  118   152  172      0    50    50.000000 0.025
+  119   152  172      0    50    50.000000 0.29
+  120   152  172      0    50    50.000000 0.022
+  121   152  172      0    50    50.000000 0.021
+  122   152  172      0    50    50.000000 0.024
+  123   152  172      0    50    50.000000 0.019
+  124   208  252      0    50    50.000000 0.032
+  125   264  315      0    50    50.000000 0.345
+  126   264  280      0    50    50.000000 0.548
+  127   184  206      0    49    49.000000 0.024
+  128   152  172      0    50    50.000000 0.025
+  129   152  172      0    50    50.000000 0.022
+  130   376  288      1    51    46.000000 120.034
+  131   216  234      0    58    58.000000 3.383
+  132   408  316      1    51    45.000000 120.353
+  133   152  172      0    50    50.000000 0.021
+  134   240  269      0    49    49.000000 1.123
+  135   432  316      1    49    46.000000 120.021
+  136    56   92      0    52    52.000000 0.007
+  137    88  126      0    51    51.000000 0.01
+  138   120  154      0    51    51.000000 0.016
+  139    56   92      0    52    52.000000 0.008
+  140   120  143      0    50    50.000000 0.233
+  141    56   92      0    52    52.000000 0.009
+  142    56   92      0    52    52.000000 0.007
+  143    56   92      0    52    52.000000 0.005
+  144    88  128      0    52    52.000000 0.026
+  145   120  156      0    51    51.000000 0.222
+  146   248  232      0    52    52.000000 0.458
+  147   472  348      1    56    46.000000 155.182
+  148   696  446      1    52    45.000000 120.049
+  149   248  232      0    52    52.000000 0.182
+  150   696  406      1    52    45.000000 121.018
+  151   248  232      0    52    52.000000 0.249
+  152   248  232      0    52    52.000000 0.209
+  153   248  232      0    52    52.000000 0.189
+  154   280  268      0    52    52.000000 0.406
+  155   504  366      1    53    45.000000 120.108
+  156    88  108      0    56    56.000000 0.021
+  157   120  126      0    48    48.000000 0.067
+  158    56   72      0    56    56.000000 0.008
+  159    56   72      0    56    56.000000 0.007
+  163    35    - UNCOVERABLE missing=672 orders=[7, 14]
+  165   200    - UNCOVERABLE missing=196 orders=[4]
+  166    56    - UNCOVERABLE missing=588 orders=[4]
+  167    35    - UNCOVERABLE missing=672 orders=[7, 14]
+  168   344    - UNCOVERABLE missing=392 orders=[4]
+  169   664  344      1    47    45.000000 120.015
+  170   280  184      0    49    49.000000 0.124
+  171  1624  464      1    58    40.000000 120.02
+  172   280  144      0    40    40.000000 0.202

@@ -1,0 +1,182 @@
+# export range 1..176 of 1..
+176
+  into C:/Users/Felix/Documents/deepseek-harness/group-split2/computation/orde\
+r324/covers-18.jsonl
+skip 324 1 exp 324
+skip 324 2 exp 324
+skip 324 3 exp 162
+skip 324 4 exp 162
+skip 324 5 exp 162
+skip 324 6 exp 36
+skip 324 7 exp 36
+skip 324 8 exp 36
+skip 324 9 exp 36
+skip 324 10 exp 108
+skip 324 11 exp 108
+skip 324 12 exp 108
+skip 324 13 exp 36
+skip 324 14 exp 36
+skip 324 15 exp 36
+skip 324 16 exp 36
+skip 324 17 exp 36
+skip 324 18 exp 36
+skip 324 19 exp 36
+skip 324 20 exp 36
+skip 324 21 exp 108
+skip 324 22 exp 36
+skip 324 23 exp 36
+skip 324 24 exp 36
+skip 324 25 exp 36
+skip 324 26 exp 36
+skip 324 27 exp 36
+skip 324 28 exp 36
+skip 324 29 exp 108
+skip 324 30 exp 108
+skip 324 31 exp 36
+skip 324 32 exp 36
+skip 324 33 exp 36
+skip 324 34 exp 36
+skip 324 35 exp 36
+done 324 36 subs 143 ms 438
+done 324 37 subs 118 ms 391
+skip 324 38 exp 54
+done 324 39 subs 126 ms 484
+done 324 40 subs 63 ms 328
+done 324 41 subs 63 ms 359
+skip 324 42 exp 54
+skip 324 43 exp 54
+skip 324 44 exp 54
+skip 324 45 exp 54
+done 324 46 subs 12 ms 203
+done 324 47 subs 12 ms 219
+done 324 48 subs 12 ms 187
+done 324 49 subs 12 ms 125
+done 324 50 subs 12 ms 172
+done 324 51 subs 12 ms 110
+done 324 52 subs 12 ms 203
+done 324 53 subs 12 ms 140
+done 324 54 subs 12 ms 204
+done 324 55 subs 12 ms 187
+done 324 56 subs 12 ms 141
+done 324 57 subs 12 ms 109
+done 324 58 subs 12 ms 219
+done 324 59 subs 39 ms 250
+done 324 60 subs 39 ms 250
+done 324 61 subs 39 ms 234
+done 324 62 subs 66 ms 235
+done 324 63 subs 118 ms 312
+done 324 64 subs 39 ms 203
+skip 324 65 exp 54
+skip 324 66 exp 54
+skip 324 67 exp 54
+done 324 68 subs 82 ms 328
+done 324 69 subs 118 ms 407
+done 324 70 subs 55 ms 296
+done 324 71 subs 55 ms 391
+done 324 72 subs 55 ms 281
+done 324 73 subs 55 ms 578
+done 324 74 subs 247 ms 938
+done 324 75 subs 118 ms 734
+skip 324 76 exp 54
+done 324 77 subs 118 ms 688
+done 324 78 subs 55 ms 484
+done 324 79 subs 55 ms 469
+done 324 80 subs 55 ms 406
+done 324 81 subs 39 ms 500
+done 324 82 subs 66 ms 594
+done 324 83 subs 39 ms 344
+skip 324 84 exp 54
+skip 324 85 exp 54
+done 324 86 subs 66 ms 359
+done 324 87 subs 39 ms 203
+done 324 88 subs 39 ms 297
+done 324 89 subs 39 ms 281
+skip 324 90 exp 36
+skip 324 91 exp 36
+skip 324 92 exp 12
+skip 324 93 exp 12
+skip 324 94 exp 36
+skip 324 95 exp 36
+skip 324 96 exp 36
+skip 324 97 exp 36
+skip 324 98 exp 12
+skip 324 99 exp 12
+skip 324 100 exp 36
+skip 324 101 exp 36
+skip 324 102 exp 36
+skip 324 103 exp 36
+skip 324 104 exp 12
+skip 324 105 exp 36
+skip 324 106 exp 12
+skip 324 107 exp 36
+skip 324 108 exp 36
+skip 324 109 exp 36
+skip 324 110 exp 12
+skip 324 111 exp 36
+skip 324 112 exp 36
+skip 324 113 exp 12
+done 324 114 subs 86 ms 516
+done 324 115 subs 54 ms 328
+done 324 116 subs 131 ms 453
+done 324 117 subs 119 ms 484
+done 324 118 subs 86 ms 422
+done 324 119 subs 242 ms 891
+done 324 120 subs 262 ms 765
+done 324 121 subs 235 ms 1188
+done 324 122 subs 211 ms 2797
+done 324 123 subs 118 ms 1672
+done 324 124 subs 207 ms 2750
+done 324 125 subs 63 ms 1359
+done 324 126 subs 12 ms 1359
+done 324 127 subs 12 ms 953
+done 324 128 subs 12 ms 891
+done 324 129 subs 12 ms 875
+done 324 130 subs 12 ms 1625
+done 324 131 subs 12 ms 953
+done 324 132 subs 12 ms 797
+done 324 133 subs 39 ms 1188
+done 324 134 subs 39 ms 765
+done 324 135 subs 39 ms 875
+done 324 136 subs 66 ms 938
+done 324 137 subs 54 ms 828
+done 324 138 subs 111 ms 875
+done 324 139 subs 99 ms 1015
+done 324 140 subs 66 ms 1297
+done 324 141 subs 54 ms 1047
+done 324 142 subs 118 ms 1547
+done 324 143 subs 66 ms 891
+done 324 144 subs 199 ms 1547
+done 324 145 subs 163 ms 1609
+done 324 146 subs 118 ms 1078
+done 324 147 subs 55 ms 938
+done 324 148 subs 55 ms 812
+done 324 149 subs 418 ms 3047
+done 324 150 subs 307 ms 2422
+done 324 151 subs 66 ms 1828
+done 324 152 subs 147 ms 2547
+done 324 153 subs 66 ms 1890
+done 324 154 subs 39 ms 2563
+skip 324 155 exp 12
+skip 324 156 exp 12
+skip 324 157 exp 12
+skip 324 158 exp 12
+skip 324 159 exp 12
+done 324 160 subs 39 ms 625
+skip 324 161 exp 12
+skip 324 162 exp 12
+skip 324 163 exp 12
+skip 324 164 exp 12
+done 324 165 subs 162 ms 1781
+done 324 166 subs 266 ms 1797
+done 324 167 subs 174 ms 1109
+done 324 168 subs 1378 ms 4422
+done 324 169 subs 1286 ms 3875
+done 324 170 subs 370 ms 1969
+done 324 171 subs 39 ms 2125
+done 324 172 subs 234 ms 3984
+done 324 173 subs 246 ms 2359
+done 324 174 subs 442 ms 4641
+done 324 175 subs 2470 ms 11609
+done 324 176 subs 390 ms 10016
+# export range finished
+EXIT=0

@@ -1,0 +1,209 @@
+# n = 20: 0-1 set-cover solves for every exported SmallGroup(400, i).
+# Solver: scipy 1.13.1 / HiGHS via scipy.optimize.milp, integrality 0/1,
+# mip_rel_gap = 0, time limit 120 s per instance.  status 0 = proved optimal,
+# status 1 = time limit hit (cover is a constructed upper bound, bound is the
+# dual lower bound), "UNCOVERABLE" = the 20-subgroups do not cover all 400
+# elements.
+#
+# The instances were solved in several batches to keep the wall-clock time
+# reasonable; the union of the batches is exactly the 96 exported ids.
+#   batch A : one single process over all ids; its stdout was truncated when the
+#             run was restarted after a HiGHS crash, so ids without a line below
+#             were completed in that pass (their records are in solutions-20.jsonl)
+#   batch B*: three parallel workers over a stride partition of the remaining ids
+#   batch Q*: remaining / re-run ids
+# Every id appears at least once; where an id was re-run, the last line is the
+# one recorded in solutions-20.jsonl.
+#
+# ---------------------------------------------------------------- batch A
+id  102 vars   258 rows  192 status 0 cover 34 bound 34.00000000000002 t 6.813s merged/presolve=False
+id  107 vars   162 rows  156 status 0 cover 34 bound 34.0 t 0.834s merged/presolve=False
+id  108 vars    42 rows   70 status 0 cover 36 bound 36.0 t 0.005s merged/presolve=False
+id  109 vars    66 rows   84 status 0 cover 36 bound 36.0 t 0.016s merged/presolve=False
+id  110 vars    42 rows   70 status 0 cover 42 bound 42.0 t 0.006s merged/presolve=False
+id  117 vars    74 rows  135 status 0 cover 31 bound 31.0 t 0.038s merged/presolve=False
+id  118 vars   114 rows  170 status 0 cover 31 bound 31.0 t 0.157s merged/presolve=False
+id  119 vars    74 rows  135 status 0 cover 36 bound 36.0 t 0.031s merged/presolve=False
+id  124 vars   122 rows  184 status 0 cover 34 bound 34.0 t 0.138s merged/presolve=False
+id  125 vars   162 rows  204 status 0 cover 34 bound 33.99999999999999 t 0.144s merged/presolve=False
+id  126 vars   122 rows  184 status 0 cover 36 bound 36.0 t 0.051s merged/presolve=False
+id  129 vars   114 rows  172 status 0 cover 36 bound 35.99999999999762 t 0.329s merged/presolve=False
+id  130 vars    74 rows  150 status 0 cover 36 bound 36.0 t 0.035s merged/presolve=False
+id  134 vars    90 rows  214 status 0 cover 36 bound 36.0 t 0.014s merged/presolve=False
+id  137 vars    42 rows   83 status 0 cover 31 bound 31.0 t 0.006s merged/presolve=False
+id  138 vars    42 rows   83 status 0 cover 36 bound 36.0 t 0.008s merged/presolve=False
+id  141 vars    66 rows   96 status 0 cover 31 bound 31.0 t 0.009s merged/presolve=False
+id  144 vars    58 rows  143 status 0 cover 31 bound 31.0 t 0.006s merged/presolve=False
+id  145 vars    58 rows  143 status 0 cover 36 bound 36.0 t 0.009s merged/presolve=False
+id  148 vars    82 rows  156 status 0 cover 31 bound 31.0 t 0.016s merged/presolve=False
+id  151 vars   186 rows  196 status 0 cover 31 bound 31.0 t 0.136s merged/presolve=False
+id  152 vars   186 rows  196 status 0 cover 36 bound 36.0 t 0.149s merged/presolve=False
+id  155 vars   306 rows  228 status 0 cover 31 bound 31.0 t 0.244s merged/presolve=False
+id  158 vars   106 rows  192 status 0 cover 31 bound 31.0 t 0.008s merged/presolve=False
+id  159 vars   106 rows  192 status 0 cover 36 bound 36.0 t 0.013s merged/presolve=False
+id  162 vars   226 rows  228 status 0 cover 31 bound 30.999999999999996 t 0.388s merged/presolve=False
+id  163 vars    90 rows  104 status 0 cover 36 bound 36.0 t 0.01s merged/presolve=False
+id  164 vars    90 rows  104 status 0 cover 36 bound 36.0 t 0.007s merged/presolve=False
+id  165 vars    90 rows  104 status 0 cover 36 bound 36.0 t 0.012s merged/presolve=False
+id  166 vars    90 rows  104 status 0 cover 36 bound 36.0 t 0.01s merged/presolve=False
+id  167 vars    90 rows  104 status 0 cover 36 bound 36.0 t 0.008s merged/presolve=False
+id  168 vars    90 rows  104 status 0 cover 36 bound 36.0 t 0.013s merged/presolve=False
+id  169 vars   130 rows  152 status 0 cover 36 bound 36.0 t 0.205s merged/presolve=False
+id  170 vars   170 rows  187 status 0 cover 36 bound 36.0 t 0.192s merged/presolve=False
+id  171 vars   170 rows  172 status 0 cover 36 bound 36.0 t 0.197s merged/presolve=False
+id  172 vars   114 rows  130 status 0 cover 35 bound 35.0 t 0.23s merged/presolve=False
+id  173 vars    90 rows  104 status 0 cover 36 bound 36.0 t 0.012s merged/presolve=False
+id  174 vars    90 rows  104 status 0 cover 36 bound 36.0 t 0.011s merged/presolve=False
+id  175 vars   210 rows  168 status 0 cover 35 bound 35.00000000000031 t 25.669s merged/presolve=False
+id  176 vars   138 rows  150 status 0 cover 34 bound 34.0 t 0.147s merged/presolve=False
+id  177 vars   234 rows  188 status 0 cover 34 bound 33.99999999999988 t 16.227s merged/presolve=False
+id  178 vars    90 rows  104 status 0 cover 36 bound 36.0 t 0.011s merged/presolve=False
+id  179 vars   154 rows  165 status 0 cover 35 bound 35.0 t 0.212s merged/presolve=False
+id  180 vars   250 rows  188 status 1 cover 35 bound 34.0 t 120.032s merged/presolve=False
+id  181 vars    42 rows   68 status 0 cover 38 bound 38.0 t 0.008s merged/presolve=False
+id  182 vars    66 rows   94 status 0 cover 37 bound 37.0 t 0.026s merged/presolve=False
+id  183 vars    90 rows  114 status 0 cover 37 bound 37.0 t 0.011s merged/presolve=False
+id  184 vars    42 rows   68 status 0 cover 38 bound 38.0 t 0.006s merged/presolve=False
+id  185 vars    90 rows  107 status 0 cover 36 bound 36.0 t 0.235s merged/presolve=False
+id  186 vars    42 rows   68 status 0 cover 38 bound 38.0 t 0.008s merged/presolve=False
+id  187 vars    42 rows   68 status 0 cover 38 bound 38.0 t 0.006s merged/presolve=False
+id  188 vars    42 rows   68 status 0 cover 38 bound 38.0 t 0.005s merged/presolve=False
+id  189 vars    66 rows   96 status 0 cover 38 bound 38.0 t 0.019s merged/presolve=False
+id  190 vars    90 rows  116 status 0 cover 37 bound 37.0 t 0.212s merged/presolve=False
+id  191 vars   138 rows  128 status 0 cover 38 bound 38.0 t 0.011s merged/presolve=False
+id  192 vars   258 rows  192 status 1 cover 37 bound 35.0 t 120.14s merged/presolve=False
+
+# ---------------------------------------------------------------- parts\solve-20-p1.log
+id  193 vars   378 rows  242 status 0 cover 34 bound 34.000000000000036 t 116.753s merged/presolve=False
+id  196 vars   138 rows  128 status 0 cover 38 bound 38.0 t 0.244s merged/presolve=False
+id  199 vars   162 rows  156 status 0 cover 38 bound 38.0 t 0.419s merged/presolve=False
+id  202 vars    90 rows   98 status 0 cover 36 bound 36.0 t 0.058s merged/presolve=False
+id  205 vars    82 rows  172 status 0 cover 31 bound 31.0 t 0.19s merged/presolve=False
+id  210 vars   162 rows  204 status 0 cover 36 bound 35.99999999999997 t 0.545s merged/presolve=False
+id  213 vars    35 UNCOVERABLE missing 320 orders [5]
+id  216 vars   306 rows  228 status 0 cover 35 bound 34.99999999999893 t 60.52s merged/presolve=False
+id  219 vars   210 rows  136 status 0 cover 35 bound 35.0 t 0.329s merged/presolve=False
+SOLVE DONE
+
+# ---------------------------------------------------------------- parts\solve-20-p2.log
+id  194 vars   138 rows  128 status 0 cover 38 bound 38.0 t 0.017s merged/presolve=False
+id  197 vars   138 rows  128 status 0 cover 38 bound 38.0 t 0.018s merged/presolve=False
+id  200 vars   282 rows  206 status 0 cover 34 bound 34.000000000000064 t 65.558s merged/presolve=False
+id  203 vars    42 rows   56 status 0 cover 42 bound 42.0 t 0.01s merged/presolve=False
+id  207 vars    90 rows  192 status 0 cover 50 bound 50.0 t 0.015s merged/presolve=False
+id  211 vars   154 rows  194 status 0 cover 36 bound 36.00000000000047 t 1.944s merged/presolve=False
+id  214 vars    66 rows   96 status 0 cover 35 bound 35.0 t 0.021s merged/presolve=False
+id  217 vars   226 rows  228 status 0 cover 35 bound 35.00000000000001 t 34.331s merged/presolve=False
+id  220 vars   882 rows  256 status 1 cover 35 bound 28.000000000000203 t 120.023s merged/presolve=False
+SOLVE DONE
+
+# ---------------------------------------------------------------- parts\solve-20-p3.log
+id  195 vars   378 rows  224 status 0 cover 35 bound 34.999999999999645 t 66.997s merged/presolve=False
+id  198 vars   138 rows  128 status 0 cover 38 bound 38.0 t 0.217s merged/presolve=False
+id  201 vars    66 rows   84 status 0 cover 42 bound 42.0 t 0.029s merged/presolve=False
+id  204 vars    42 rows   56 status 0 cover 42 bound 42.0 t 0.008s merged/presolve=False
+id  209 vars   114 rows  170 status 0 cover 36 bound 35.99999999999989 t 1.322s merged/presolve=False
+id  212 vars    90 rows  214 status 0 cover 36 bound 36.000000000000014 t 0.198s merged/presolve=False
+id  215 vars    82 rows  156 status 0 cover 35 bound 35.0 t 0.03s merged/presolve=False
+id  218 vars   418 rows  208 status 0 cover 33 bound 33.00000000000009 t 25.385s merged/presolve=False
+id  221 vars   210 rows  112 status 0 cover 30 bound 30.0 t 0.036s merged/presolve=False
+SOLVE DONE
+
+# ---------------------------------------------------------------- final per-id table (from solutions-20.jsonl)
+#   id  vars rows status cover        bound  seconds
+   71    90    -      0    36    36.000000 0.017
+   72   114    -      0    35    35.000000 0.047
+   73   210    -      0    35    35.000000 42.722
+   74    90    -      0    36    36.000000 0.015
+   75    90    -      0    36    36.000000 0.012
+   83    42    -      0    37    37.000000 0.004
+   84    42    -      0    38    38.000000 0.004
+   85    42    -      0    38    38.000000 0.003
+   86    66    -      0    37    37.000000 0.01
+   91    66    -      0    37    37.000000 0.018
+   99   138    -      0    34    34.000000 0.189
+  100   138    -      0    38    38.000000 0.019
+  101   138    -      0    38    38.000000 0.018
+  102   258  192      0    34    34.000000 6.813
+  107   162  156      0    34    34.000000 0.834
+  108    42   70      0    36    36.000000 0.005
+  109    66   84      0    36    36.000000 0.016
+  110    42   70      0    42    42.000000 0.006
+  117    74  135      0    31    31.000000 0.038
+  118   114  170      0    31    31.000000 0.157
+  119    74  135      0    36    36.000000 0.031
+  124   122  184      0    34    34.000000 0.138
+  125   162  204      0    34    34.000000 0.144
+  126   122  184      0    36    36.000000 0.051
+  129   114  172      0    36    36.000000 0.329
+  130    74  150      0    36    36.000000 0.035
+  134    90  214      0    36    36.000000 0.014
+  137    42   83      0    31    31.000000 0.006
+  138    42   83      0    36    36.000000 0.008
+  141    66   96      0    31    31.000000 0.009
+  144    58  143      0    31    31.000000 0.006
+  145    58  143      0    36    36.000000 0.009
+  148    82  156      0    31    31.000000 0.016
+  151   186  196      0    31    31.000000 0.136
+  152   186  196      0    36    36.000000 0.149
+  155   306  228      0    31    31.000000 0.244
+  158   106  192      0    31    31.000000 0.008
+  159   106  192      0    36    36.000000 0.013
+  162   226  228      0    31    31.000000 0.388
+  163    90  104      0    36    36.000000 0.01
+  164    90  104      0    36    36.000000 0.007
+  165    90  104      0    36    36.000000 0.012
+  166    90  104      0    36    36.000000 0.01
+  167    90  104      0    36    36.000000 0.008
+  168    90  104      0    36    36.000000 0.013
+  169   130  152      0    36    36.000000 0.205
+  170   170  187      0    36    36.000000 0.192
+  171   170  172      0    36    36.000000 0.197
+  172   114  130      0    35    35.000000 0.23
+  173    90  104      0    36    36.000000 0.012
+  174    90  104      0    36    36.000000 0.011
+  175   210  168      0    35    35.000000 25.669
+  176   138  150      0    34    34.000000 0.147
+  177   234  188      0    34    34.000000 16.227
+  178    90  104      0    36    36.000000 0.011
+  179   154  165      0    35    35.000000 0.212
+  180   250  188      1    35    34.000000 120.032
+  181    42   68      0    38    38.000000 0.008
+  182    66   94      0    37    37.000000 0.026
+  183    90  114      0    37    37.000000 0.011
+  184    42   68      0    38    38.000000 0.006
+  185    90  107      0    36    36.000000 0.235
+  186    42   68      0    38    38.000000 0.008
+  187    42   68      0    38    38.000000 0.006
+  188    42   68      0    38    38.000000 0.005
+  189    66   96      0    38    38.000000 0.019
+  190    90  116      0    37    37.000000 0.212
+  191   138  128      0    38    38.000000 0.011
+  192   258  192      1    37    35.000000 120.14
+  193   378  242      0    34    34.000000 116.753
+  194   138  128      0    38    38.000000 0.017
+  195   378  224      0    35    35.000000 66.997
+  196   138  128      0    38    38.000000 0.244
+  197   138  128      0    38    38.000000 0.018
+  198   138  128      0    38    38.000000 0.217
+  199   162  156      0    38    38.000000 0.419
+  200   282  206      0    34    34.000000 65.558
+  201    66   84      0    42    42.000000 0.029
+  202    90   98      0    36    36.000000 0.058
+  203    42   56      0    42    42.000000 0.01
+  204    42   56      0    42    42.000000 0.008
+  205    82  172      0    31    31.000000 0.19
+  207    90  192      0    50    50.000000 0.015
+  209   114  170      0    36    36.000000 1.322
+  210   162  204      0    36    36.000000 0.545
+  211   154  194      0    36    36.000000 1.944
+  212    90  214      0    36    36.000000 0.198
+  213    35    - UNCOVERABLE missing=320 orders=[5]
+  214    66   96      0    35    35.000000 0.021
+  215    82  156      0    35    35.000000 0.03
+  216   306  228      0    35    35.000000 60.52
+  217   226  228      0    35    35.000000 34.331
+  218   418  208      0    33    33.000000 25.385
+  219   210  136      0    35    35.000000 0.329
+  220   882  256      1    36    30.000000 120.064
+  221   210  112      0    30    30.000000 0.036

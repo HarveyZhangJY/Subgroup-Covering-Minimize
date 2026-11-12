@@ -63,14 +63,20 @@ Further proved upper bound: if \(p\) is prime, \(b\) is a prime power, and \(p\m
 \alpha(pb)\le pb+b+1.
 \]
 
+Further exact family: if \(p,q\) are distinct primes, \(b=q^\alpha\), \(p>b^2\), and \(q\nmid p^2-1\), then
+\[
+\boxed{\alpha(pq^\alpha)=(p+1)(b+1)=P(pq^\alpha).}
+\]
+
 Computed/certified values include
 \[
-\alpha(6)=10,\qquad \alpha(12)=17,\qquad \alpha(15)=24.
+\alpha(6)=10,\qquad \alpha(12)=17,\qquad \alpha(15)=24,\qquad
+\alpha(18)=27,\qquad \alpha(20)=30,\qquad \alpha(28)=40.
 \]
 
 ## Paper
 
-- [Complete 18-page Chinese paper (PDF)](paper/solution.pdf)
+- [Complete 20-page Chinese paper (PDF)](paper/solution.pdf)
 - [LaTeX source](paper/solution.tex)
 
 The paper contains the literature review, complete proofs for prime powers and \(pq\), the fixed-\(C_n^2\) formula, general upper/lower bounds, computation certificates, counterexamples to natural closed-form guesses, and the precise boundary of what remains unresolved.
@@ -84,6 +90,10 @@ proof/                 Individual proofs and peer-review reports
 computation/           Reproducible scripts, results, and coverage certificates
   order144/            Complete n=12 certification over all 197 groups of order 144
   order225/            Complete n=15 certification over all 6 groups of order 225
+  order324/            Complete n=18 certification over all 176 groups of order 324
+  order400/            Complete n=20 certification over all 221 groups of order 400
+  order784/            Complete n=28 certification over all 172 groups of order 784
+  order1936/           Scripts for the platform-assisted n=44 computation (not a certified result here)
 ```
 
 Key documents:
@@ -92,6 +102,9 @@ Key documents:
 - `proof/candidate-proof.md`: general bounds, Sylow lower bounds, and complete \(pq\) proof.
 - `proof/partition-approach.md`: equal-partition structure and the \(n=12\) computation.
 - `proof/general-n.md`: final synthesis for arbitrary \(n\), including unresolved gaps.
+- `proof/pqalpha-general.md`: general \(n=pq^\alpha\) structure, Sylow bounds, and the exact values for \(n=18,20,28\).
+- `proof/pq2-q2.md`: the \(n=4p\) analysis, Burnside reduction, and the \(p\ge5\) lower-bound gap.
+- `research/pqalpha-literature.md`: targeted literature search for \(n=pq^\alpha\).
 - `proof/semidirect-upper.md`: the \(pb+b+1\) construction.
 - `research/coordination.md`: shared coordination log showing how parallel research and computation were deduplicated.
 
@@ -115,6 +128,9 @@ Offline audit of the saved certificates (no group enumeration or MILP rerun):
 python computation/verify_all.py
 python computation/order144/audit.py
 python computation/order225/audit.py
+python computation/order324/audit.py
+python computation/order400/audit.py
+python computation/order784/audit.py
 ```
 
 Lightweight constructions and small-order computations:
@@ -138,14 +154,13 @@ xelatex solution.tex
 
 - The literature statement is limited to the sources reviewed in `research/primary-sources.md` and `research/sequence-lookup.md`.
 - “No formula found” does not mean “proved impossible.”
-- The values \(\alpha(18),\alpha(20),\alpha(30)\) are not known exactly here. Certified ranges are
+- The values \(\alpha(18)=27\), \(\alpha(20)=30\), \(\alpha(28)=40\) are exact, certified by complete enumerations of the 176, 221, and 172 groups of the respective orders. The remaining small-n range is
   \[
-  20\le\alpha(18)\le28,\qquad
-  22\le\alpha(20)\le30,\qquad
   32\le\alpha(30)\le60.
   \]
 - The \(n=12\) certificate uses a complete enumeration of the 197 groups of order 144 with exact integer programming. One instance timed out, but its certified dual lower bound is 18, so it cannot affect the global minimum 17.
 - The \(n=15\) certificate is complete: all 6 groups of order 225 were enumerated, with no timeout.
+- The \(n=44\) platform-assisted run is recorded in `research/ustc-platform.md`; it is not used as a certified value in the paper.
 
 ## Citation
 
