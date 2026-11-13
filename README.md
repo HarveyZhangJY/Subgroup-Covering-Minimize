@@ -161,7 +161,7 @@ xelatex solution.tex
   \]
 - The \(n=12\) certificate uses a complete enumeration of the 197 groups of order 144 with exact integer programming. One instance timed out, but its certified dual lower bound is 18, so it cannot affect the global minimum 17.
 - The \(n=15\) certificate is complete: all 6 groups of order 225 were enumerated, with no timeout.
-- The \(n=44\) platform-assisted run is recorded in `research/ustc-platform.md`; it is not used as a certified value in the paper.
+- The \(n=44\) platform-assisted run gives \(59\le\alpha(44)\le60\) (a symmetry-fixed SCIP dual bound 58.333 and an explicit 60-cover); it is not used as a certified exact value in the paper.
 
 ## Citation
 
